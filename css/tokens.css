@@ -1,0 +1,98 @@
+/* ==========================================================================
+   EvolveNXT — Design Tokens
+   Brand Direction 05 · "Assurance System"
+   Single source of truth for color, type, spacing, radius, shadow, motion.
+   ========================================================================== */
+
+:root {
+  /* ---- Brand palette -------------------------------------------------- */
+  --deep-navy:     #020838;
+  --midnight:      #06133A;
+  --royal:         #1B4CC1;
+  --royal-600:     #1740a8;
+  --royal-400:     #4f79db;
+  --slate:         #50678F;
+  --light-gray:    #E6E8EE;
+  --soft-gray:     #F2F3F6;
+  --charcoal:      #1A1D23;
+  --accent:        #6C2BD9;   /* purple — use sparingly (~3%) */
+  --accent-400:    #8b52e6;
+  --white:         #ffffff;
+
+  /* ---- Semantic roles ------------------------------------------------- */
+  --bg:            var(--soft-gray);
+  --bg-elevated:   var(--white);
+  --bg-dark:       var(--deep-navy);
+  --surface:       var(--white);
+  --border:        var(--light-gray);
+  --border-dark:   rgba(255,255,255,.10);
+
+  --text:          #0b1020;   /* near-navy ink */
+  --text-secondary:#4a5570;
+  --text-muted:    #7a879f;
+  --text-on-dark:  #eef1f8;
+  --text-on-dark-2:#a9b4cf;
+
+  --link:          var(--royal);
+  --focus-ring:    var(--accent);
+
+  /* ---- Gradients ------------------------------------------------------ */
+  --grad-brand:    linear-gradient(120deg, var(--royal) 0%, var(--accent) 100%);
+  --grad-hero:     radial-gradient(140% 120% at 15% 10%, #0a1a5c 0%, var(--midnight) 40%, var(--deep-navy) 100%);
+  --grad-sheen:    linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,0));
+  --grad-text:     linear-gradient(92deg, #ffffff 0%, #c9d6ff 55%, #b79bff 100%);
+
+  /* ---- Typography ----------------------------------------------------- */
+  --font-display: "Noto Serif Display", Georgia, "Times New Roman", serif;
+  --font-sans:    "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono:    "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* fluid type scale (min → max via clamp) */
+  --fs-display: clamp(2.75rem, 1.6rem + 5.4vw, 5.5rem);   /* hero */
+  --fs-h1:      clamp(2.25rem, 1.4rem + 3.4vw, 4rem);
+  --fs-h2:      clamp(1.9rem, 1.4rem + 2.1vw, 2.9rem);
+  --fs-h3:      clamp(1.35rem, 1.15rem + 0.9vw, 1.75rem);
+  --fs-h4:      1.125rem;
+  --fs-lead:    clamp(1.05rem, 0.98rem + 0.4vw, 1.3rem);
+  --fs-body:    1rem;
+  --fs-sm:      0.875rem;
+  --fs-xs:      0.75rem;
+
+  --lh-tight:   1.04;
+  --lh-snug:    1.2;
+  --lh-body:    1.6;
+
+  /* ---- Spacing (8pt base) -------------------------------------------- */
+  --sp-1: 0.25rem;  --sp-2: 0.5rem;  --sp-3: 1rem;  --sp-4: 1.5rem;
+  --sp-5: 2rem;     --sp-6: 3rem;    --sp-7: 4rem;  --sp-8: 6rem;
+  --sp-9: 8rem;
+
+  --section-y:  clamp(4rem, 2.5rem + 6vw, 8rem);
+  --container:  1200px;
+  --container-wide: 1360px;
+  --gutter:     clamp(1.25rem, 0.6rem + 2.4vw, 2.5rem);
+
+  /* ---- Radius --------------------------------------------------------- */
+  --r-sm: 8px;  --r-md: 14px;  --r-lg: 22px;  --r-xl: 32px;  --r-pill: 999px;
+
+  /* ---- Shadows -------------------------------------------------------- */
+  --shadow-xs: 0 1px 2px rgba(2,8,56,.06);
+  --shadow-sm: 0 2px 8px rgba(2,8,56,.06), 0 1px 2px rgba(2,8,56,.06);
+  --shadow-md: 0 10px 30px -12px rgba(2,8,56,.18);
+  --shadow-lg: 0 30px 60px -24px rgba(2,8,56,.28);
+  --shadow-glow: 0 0 0 1px rgba(27,76,193,.18), 0 18px 50px -18px rgba(27,76,193,.45);
+  --shadow-accent: 0 18px 50px -18px rgba(108,43,217,.55);
+
+  /* ---- Motion --------------------------------------------------------- */
+  --ease-out:   cubic-bezier(.16,.84,.44,1);
+  --ease-inout: cubic-bezier(.65,.05,.36,1);
+  --ease-spring:cubic-bezier(.34,1.56,.64,1);
+  --dur-1: .18s;  --dur-2: .32s;  --dur-3: .6s;  --dur-4: .9s;
+
+  --nav-h: 74px;
+}
+
+/* honor the OS "reduce motion" setting everywhere */
+@media (prefers-reduced-motion: reduce) {
+  :root { --dur-1: .001s; --dur-2: .001s; --dur-3: .001s; --dur-4: .001s; }
+}

@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EvolveNXT — Insurance Distribution Management, Modernized</title>
+  <meta name="description" content="EvolveNXT unifies producer onboarding, incentive compensation, and engagement in one modern, API-driven platform for Health, Life, and P&C carriers." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <!-- Scroll progress -->
+  <div class="scroll-progress" aria-hidden="true"><span id="scrollBar"></span></div>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ============================ NAV ============================ -->
+  <header class="nav" id="nav">
+    <div class="nav__inner container-wide">
+      <a class="logo" href="#" aria-label="EvolveNXT home">
+        <svg class="logo__mark" viewBox="0 0 40 40" aria-hidden="true">
+          <path d="M20 4a16 16 0 1 0 12.9 25.4" fill="none" stroke="currentColor" stroke-width="4.6" stroke-linecap="round"/>
+          <path d="M11 20h18a9 9 0 0 0-9-9" fill="none" stroke="currentColor" stroke-width="4.6" stroke-linecap="round"/>
+        </svg>
+        <span class="logo__word">evolve<b>NXT</b></span>
+      </a>
+
+      <nav class="nav__links" aria-label="Primary">
+        <a href="#platform">Platform</a>
+        <a href="#products">Products</a>
+        <a href="#solutions">Solutions</a>
+        <a href="#delivery">How it works</a>
+        <a href="#company">Company</a>
+      </nav>
+
+      <div class="nav__actions">
+        <a class="btn btn--ghost btn--sm" href="#">Sign in</a>
+        <a class="btn btn--primary btn--sm magnetic" href="#demo">Request a Demo</a>
+      </div>
+
+      <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============================ HERO ============================ -->
+    <section class="hero" id="platform">
+      <video class="hero__video" id="heroVideo" autoplay muted loop playsinline poster="assets/hero-poster.png" aria-hidden="true">
+        <source src="assets/hero-loop.mp4" type="video/mp4" />
+      </video>
+      <canvas class="hero__canvas" id="heroCanvas" aria-hidden="true"></canvas>
+      <div class="hero__scrim" aria-hidden="true"></div>
+
+      <div class="hero__inner container">
+        <p class="eyebrow" data-reveal>
+          <span class="eyebrow__dot"></span> Insurance Distribution Management, modernized
+        </p>
+
+        <h1 class="hero__title" data-splitreveal>
+          The distribution platform built for what's&nbsp;next.
+        </h1>
+
+        <p class="hero__lead" data-reveal data-reveal-delay="1">
+          EvolveNXT unifies producer onboarding, incentive compensation, and engagement
+          in one modern, API-driven platform — so carriers move faster, stay compliant,
+          and grow with confidence.
+        </p>
+
+        <div class="hero__cta" data-reveal data-reveal-delay="2">
+          <a class="btn btn--primary btn--lg magnetic" href="#demo">Request a Demo
+            <svg viewBox="0 0 24 24" class="btn__arrow" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="btn btn--glass btn--lg" href="#products">Explore the platform</a>
+        </div>
+
+        <!-- Trusted-by marquee (placeholder logos pending real brand assets) -->
+        <div class="hero__trust" data-reveal data-reveal-delay="3">
+          <span class="hero__trust-label">Trusted by carriers across Health, Life &amp; P&amp;C</span>
+          <div class="marquee" aria-hidden="true">
+            <div class="marquee__track" id="marqueeTrack">
+              <span class="tlogo">Meridian</span><span class="tlogo">Northwind</span>
+              <span class="tlogo">Vanguard&nbsp;Health</span><span class="tlogo">Ardent</span>
+              <span class="tlogo">Beacon&nbsp;Mutual</span><span class="tlogo">Keystone</span>
+              <span class="tlogo">Summit&nbsp;Life</span><span class="tlogo">Cascade</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__scrollcue" aria-hidden="true"><span></span></div>
+    </section>
+
+    <!-- ======================= VALUE PILLARS ======================= -->
+    <section class="section pillars" aria-labelledby="pillars-h">
+      <div class="container">
+        <div class="section__head" data-reveal>
+          <p class="kicker">Why EvolveNXT</p>
+          <h2 class="section__title" id="pillars-h">An assurance system for modern distribution.</h2>
+        </div>
+
+        <div class="pillars__grid">
+          <article class="pillar tilt" data-reveal>
+            <div class="pillar__icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5l-8-3Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="m8.5 12 2.5 2.5 4.5-5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3 class="pillar__title">Enterprise-grade reliability</h3>
+            <p>Systems carriers can build on — secure, scalable, and proven with insurers since 2011.</p>
+          </article>
+
+          <article class="pillar tilt" data-reveal data-reveal-delay="1">
+            <div class="pillar__icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M9 8h6M9 12h6M9 16h4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+            </div>
+            <h3 class="pillar__title">Compliance, built in</h3>
+            <p>NIPR integration, appointment processing, and controls designed in from the start — not bolted on.</p>
+          </article>
+
+          <article class="pillar tilt" data-reveal data-reveal-delay="2">
+            <div class="pillar__icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h11M4 12h16M4 17h9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="19" cy="7" r="2.4" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="16" cy="17" r="2.4" fill="none" stroke="currentColor" stroke-width="1.7"/></svg>
+            </div>
+            <h3 class="pillar__title">Modular by design</h3>
+            <p>Adopt one module or the whole suite. Every component works together — and stands on its own.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================= PRODUCTS ========================= -->
+    <section class="section products" id="products" aria-labelledby="products-h">
+      <div class="container">
+        <div class="section__head section__head--split" data-reveal>
+          <div>
+            <p class="kicker">The platform</p>
+            <h2 class="section__title" id="products-h">One suite for the entire producer lifecycle.</h2>
+          </div>
+          <p class="section__desc">From first appointment to every commission payout, EvolveNXT covers the
+            full distribution journey with modular components that share one source of truth.</p>
+        </div>
+
+        <div class="products__grid">
+          <article class="pcard pcard--lead" data-reveal>
+            <div class="pcard__body">
+              <span class="pcard__tag">Flagship</span>
+              <h3 class="pcard__title">Incentive Compensation Management</h3>
+              <p>Model, calculate, and pay commissions with precision. Purpose-built for insurance and
+                highly configurable across Health, Life, and P&amp;C lines.</p>
+              <a class="link-arrow" href="#">Explore ICM
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            </div>
+            <!-- Original UI vignette (built from scratch, not the brand-kit example) -->
+            <div class="pcard__viz" aria-hidden="true">
+              <div class="viz-card">
+                <div class="viz-card__row viz-card__row--head">
+                  <span>Commission run · Q3</span><span class="viz-pill viz-pill--ok">Reconciled</span>
+                </div>
+                <div class="viz-bars">
+                  <span style="--h:42%"></span><span style="--h:66%"></span><span style="--h:54%"></span>
+                  <span style="--h:82%"></span><span style="--h:71%"></span><span style="--h:94%"></span>
+                </div>
+                <div class="viz-card__row">
+                  <div class="viz-stat"><em data-counter data-to="12480" data-prefix="$" data-suffix="K">$0</em><small>Payable</small></div>
+                  <div class="viz-stat"><em data-counter data-to="99.9" data-decimals="1" data-suffix="%">0%</em><small>Accuracy</small></div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="pcard tilt" data-reveal data-reveal-delay="1">
+            <div class="pcard__icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+            </div>
+            <h3 class="pcard__title">Producer Onboarding</h3>
+            <p>API-driven onboarding and contracting with NIPR integration and automated appointment processing.</p>
+            <a class="link-arrow" href="#">Learn more <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </article>
+
+          <article class="pcard tilt" data-reveal data-reveal-delay="2">
+            <div class="pcard__icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M8 20h8M12 17v3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M7 9h6M7 12h9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+            </div>
+            <h3 class="pcard__title">Producer Portal &amp; Notifications</h3>
+            <p>A unified producer experience — from first contact through ongoing management and alerts.</p>
+            <a class="link-arrow" href="#">Learn more <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </article>
+
+          <article class="pcard tilt" data-reveal data-reveal-delay="1">
+            <div class="pcard__icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l3 3v15H6z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3 class="pcard__title">Web Enrollment</h3>
+            <p>Fast, paperless plan quoting and enrollment that removes friction for producers and members alike.</p>
+            <a class="link-arrow" href="#">Learn more <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </article>
+
+          <article class="pcard tilt" data-reveal data-reveal-delay="2">
+            <div class="pcard__icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V5M4 19h16" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M8 15l3-4 3 2 4-6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3 class="pcard__title">CRM &amp; Lead Management</h3>
+            <p>Capture, route, and distribute leads with detailed analytics that keep pipelines moving.</p>
+            <a class="link-arrow" href="#">Learn more <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================== METRICS ========================== -->
+    <section class="section metrics" aria-labelledby="metrics-h">
+      <div class="container">
+        <h2 class="visually-hidden" id="metrics-h">EvolveNXT by the numbers</h2>
+        <div class="metrics__grid">
+          <div class="metric" data-reveal>
+            <span class="metric__num"><em data-counter data-to="2011" data-plain="1">0</em></span>
+            <span class="metric__label">Serving carriers since</span>
+          </div>
+          <div class="metric" data-reveal data-reveal-delay="1">
+            <span class="metric__num"><em data-counter data-to="3" data-suffix="+">0</em><i>lines</i></span>
+            <span class="metric__label">Health · Life · P&amp;C coverage</span>
+          </div>
+          <div class="metric" data-reveal data-reveal-delay="2">
+            <span class="metric__num"><em data-counter data-to="99.9" data-decimals="1" data-suffix="%">0</em></span>
+            <span class="metric__label">Platform uptime target</span>
+          </div>
+          <div class="metric" data-reveal data-reveal-delay="3">
+            <span class="metric__num"><em data-counter data-to="5" data-suffix="">0</em><i>modules</i></span>
+            <span class="metric__label">One connected suite</span>
+          </div>
+        </div>
+        <p class="metrics__note">Figures shown are illustrative pending final data from EvolveNXT.</p>
+      </div>
+    </section>
+
+    <!-- ========================= SOLUTIONS ========================= -->
+    <section class="section solutions" id="solutions" aria-labelledby="sol-h">
+      <div class="container">
+        <div class="section__head" data-reveal>
+          <p class="kicker">Built for your line of business</p>
+          <h2 class="section__title" id="sol-h">Purpose-built across the industry.</h2>
+        </div>
+
+        <div class="solutions__grid">
+          <a class="scard tilt" href="#" data-reveal>
+            <span class="scard__index">01</span>
+            <h3>Health Insurance</h3>
+            <p>Streamline broker distribution, enrollment, and compensation for health plans.</p>
+            <span class="scard__go" aria-hidden="true">→</span>
+          </a>
+          <a class="scard tilt" href="#" data-reveal data-reveal-delay="1">
+            <span class="scard__index">02</span>
+            <h3>Life &amp; Annuity</h3>
+            <p>Manage complex hierarchies and commission structures with confidence.</p>
+            <span class="scard__go" aria-hidden="true">→</span>
+          </a>
+          <a class="scard tilt" href="#" data-reveal data-reveal-delay="2">
+            <span class="scard__index">03</span>
+            <h3>Property &amp; Casualty</h3>
+            <p>Onboard and pay producers faster across P&amp;C distribution channels.</p>
+            <span class="scard__go" aria-hidden="true">→</span>
+          </a>
+          <a class="scard tilt" href="#" data-reveal data-reveal-delay="3">
+            <span class="scard__index">04</span>
+            <h3>Agencies</h3>
+            <p>Give agencies the tools to grow — self-service, transparency, and speed.</p>
+            <span class="scard__go" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================== DELIVERY ========================= -->
+    <section class="section delivery" id="delivery" aria-labelledby="del-h">
+      <div class="container">
+        <div class="section__head" data-reveal>
+          <p class="kicker">How it works</p>
+          <h2 class="section__title" id="del-h">From onboarding to payout — one continuous flow.</h2>
+        </div>
+
+        <ol class="journey">
+          <li class="journey__step" data-reveal>
+            <span class="journey__num">01</span>
+            <h3>Onboard</h3>
+            <p>Contract and appoint producers in days, not weeks, with API-driven NIPR workflows.</p>
+          </li>
+          <li class="journey__step" data-reveal data-reveal-delay="1">
+            <span class="journey__num">02</span>
+            <h3>Engage</h3>
+            <p>Give every producer one portal for status, documents, notifications, and support.</p>
+          </li>
+          <li class="journey__step" data-reveal data-reveal-delay="2">
+            <span class="journey__num">03</span>
+            <h3>Compensate</h3>
+            <p>Calculate and reconcile incentive compensation accurately, at scale, every cycle.</p>
+          </li>
+          <li class="journey__step" data-reveal data-reveal-delay="3">
+            <span class="journey__num">04</span>
+            <h3>Grow</h3>
+            <p>Turn clean data into insight — route leads, spot trends, and expand distribution.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============================ CTA ============================ -->
+    <section class="cta" id="demo" aria-labelledby="cta-h">
+      <div class="cta__glow" aria-hidden="true"></div>
+      <div class="container cta__inner">
+        <h2 class="cta__title" id="cta-h" data-reveal>Ready to move forward with confidence?</h2>
+        <p class="cta__lead" data-reveal data-reveal-delay="1">
+          See how EvolveNXT modernizes distribution management for your carrier — in a walkthrough
+          tailored to your lines of business.</p>
+        <div class="cta__actions" data-reveal data-reveal-delay="2">
+          <a class="btn btn--primary btn--lg magnetic" href="#">Request a Demo</a>
+          <a class="btn btn--outline-light btn--lg" href="#">Talk to an expert</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================== FOOTER =========================== -->
+  <footer class="footer" id="company">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a class="logo logo--footer" href="#" aria-label="EvolveNXT home">
+          <svg class="logo__mark" viewBox="0 0 40 40" aria-hidden="true">
+            <path d="M20 4a16 16 0 1 0 12.9 25.4" fill="none" stroke="currentColor" stroke-width="4.6" stroke-linecap="round"/>
+            <path d="M11 20h18a9 9 0 0 0-9-9" fill="none" stroke="currentColor" stroke-width="4.6" stroke-linecap="round"/>
+          </svg>
+          <span class="logo__word">evolve<b>NXT</b></span>
+        </a>
+        <p class="footer__tag">Next-generation insurance distribution management. Building modern,
+          enterprise-grade platforms for carriers since 2011.</p>
+      </div>
+
+      <nav class="footer__col" aria-label="Products">
+        <h4>Products</h4>
+        <a href="#">Incentive Compensation</a>
+        <a href="#">Producer Onboarding</a>
+        <a href="#">Portal &amp; Notifications</a>
+        <a href="#">Web Enrollment</a>
+        <a href="#">CRM &amp; Leads</a>
+      </nav>
+      <nav class="footer__col" aria-label="Solutions">
+        <h4>Solutions</h4>
+        <a href="#">Health</a>
+        <a href="#">Life &amp; Annuity</a>
+        <a href="#">Property &amp; Casualty</a>
+        <a href="#">Agencies</a>
+      </nav>
+      <nav class="footer__col" aria-label="Company">
+        <h4>Company</h4>
+        <a href="#">About</a>
+        <a href="#">Careers</a>
+        <a href="#">Security</a>
+        <a href="#">Contact</a>
+      </nav>
+    </div>
+    <div class="container footer__bar">
+      <span>© 2026 EvolveNXT. All rights reserved.</span>
+      <span class="footer__legal"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Accessibility</a></span>
+    </div>
+  </footer>
+
+  <script src="js/hero-canvas.js" defer></script>
+  <script src="js/animations.js" defer></script>
+  <script src="js/counters.js" defer></script>
+</body>
+</html>

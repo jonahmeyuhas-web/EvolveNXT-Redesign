@@ -1,0 +1,9 @@
+# OS
+.DS_Store
+
+# Editor / tooling
+.claude/
+*.log
+
+# Local preview scratch (not part of the site)
+preview/
