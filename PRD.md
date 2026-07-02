@@ -1,61 +1,56 @@
 # EvolveNXT — Website Redesign PRD
 
 **Owner:** Jonah (Content Intern)
-**Updated:** 2026-07-01
-**Direction:** "Distribution OS" (full visual reset; two prior directions retired)
+**Updated:** 2026-07-02
+**Direction:** "Interface Surfaces" (third full reset; boxes and line-art both retired)
 
 ---
 
 ## 1. Positioning
 
 EvolveNXT is a premium **operating system for insurance distribution**: enterprise software
-that helps carriers manage producer onboarding, contracting, hierarchy, incentive
-compensation, producer portals, web enrollment, CRM, lead management, and reporting.
+for carriers covering producer onboarding, contracting, hierarchy, incentive compensation,
+producer portals, notifications, web enrollment, CRM, lead management, and reporting.
 
-The site must feel sleek, modern, enterprise-grade, technical but not cold, and premium.
-Quality bar: closer to Linear / Stripe / Apple / a premium VC site than a B2B SaaS template.
+Quality bar: cinematic product-interface design, closer to a high-end product film /
+premium VC site than any SaaS template.
 
-## 2. Hard rules
+## 2. Hard rules (accumulated across four rounds of client feedback)
 
-- **No CSS gradients.** Flat color fields; glow comes from light (box-shadow, canvas luminance).
-- **No rounded corners.** `border-radius: 0` across the whole system.
-- **No fake anything:** no invented metrics, dollar amounts, testimonials, client logos,
-  awards, or placeholder $0 values. Status labels only ("Verified", "Active", "Complete").
-- No green. Purple only as a rare accent; the site reads blue.
-- No em-dashes in copy or code.
-- Every animation has a `prefers-reduced-motion` path.
+- **No boxes:** no feature cards, stat cards, dashboards-as-widgets, glass-panel spam, icon grids.
+- **No line-art:** no network webs, node maps, curves, timelines, polygon/diamond diagrams,
+  or decorative SVG. Lines exist only as dividers, table rules, and tiny interface details.
+- **No fake anything:** no invented metrics, dollar values, percentages, names, carriers,
+  logos, testimonials, or $0 placeholders. Status words ("Signed", "In review") are allowed.
+- No CSS gradients, no rounded corners, no green, no loud purple, no em-dashes.
+- Every animation has a reduced-motion path; mobile is calm and un-pinned.
 
-## 3. System
+## 3. Visual system
 
-- **Palette:** deep navy `#05080F`–`#0E1A2E` field, off-white `#F2F5F9` text, slate grays,
-  electric blue `#3D8BFD` / action blue `#2160D8`, soft cyan `#7CC7FF`, restrained violet
-  `#8B7CF6` (canvas pulses only). Light editorial section on `#F3F5F8`.
-- **Type:** Geist (display + body) with tight tracking; Geist Mono for uppercase eyebrow labels.
-- **Surfaces:** sharp glass (translucent charcoal-blue + backdrop blur + 1px hairline).
+- **Primitives:** layered operating-system "sheets" (hairline-bordered dark surfaces) built
+  from typography: mono headers/tabs, thin table rows (`.irow`), status labels, group labels,
+  nested indentation. Editorial columns, thin dividers, negative space everywhere else.
+- **Palette:** near-black navy `#04070D` field, off-white `#F1F4F9`, slate inks, steel
+  `#5E7CA8` rules, electric blue `#2160D8/#3D8BFD` actions, cyan `#7CC7FF` live labels.
+- **Type:** Geist (tight-tracked display + body), Geist Mono (labels, tabs, statuses).
 
-## 4. Homepage (5 sections)
+## 4. Homepage (four movements)
 
-1. **Hero (scroll-driven).** Sticky 240vh stage. Canvas "distribution command center":
-   layered network, thin connection lines with traveling light pulses, 7 producer-lifecycle
-   nodes that come online as you scroll; panels parallax; subtle mouse drift. Copy:
-   "The operating system for insurance distribution." + approved subline; CTAs
-   "Request a demo" / "Explore the platform". Three sharp glass panels (Producer file /
-   Hierarchy / Compensation) showing statuses only. A Higgsfield loop can layer in later.
-2. **Distribution OS Flow (scroll-scrubbed).** Onboard → Contract → Appoint → Place →
-   Enroll → Compensate → Report. Rail fills and nodes light with scroll (static reveal on mobile).
-3. **Core Platform Modules.** 5 sharp glass cards (Onboarding, Incentive Comp, Portal &
-   Notifications, Web Enrollment, CRM & Leads) with abstract animated UI previews on hover.
-4. **Built for Insurance Complexity.** Light editorial break: lines of business, complex
-   hierarchies, enterprise control, with minimal line diagrams.
-5. **Final CTA.** Dark navy, low-opacity network canvas, "Modernize the way insurance
-   distribution gets managed." + Request a demo.
-
-Nav: transparent → glass on scroll. Logo / Platform / Products / Solutions / About / Contact / demo CTA.
+1. **Hero.** Copy left; a layered OS surface right: angled in perspective, cropped off the
+   right viewport edge, three stacked sheets (reporting / onboarding workflow / portal
+   activity trail). Motion: camera drift, a soft scanning light bar, rows gently activating,
+   and a scroll pin where the headline lifts away while the surface settles.
+2. **Lifecycle as a product story.** Pinned. Left: stage title + verbatim copy (Onboard →
+   Contract → Appoint → Place → Enroll → Compensate → Report). Right: one "Distribution
+   record" sheet whose interface state transforms per stage (workflow rows, agreements,
+   LOB status rows, hierarchy indentation, enrollment activity, comp rule groups, reporting).
+3. **Product console.** Left: vertical product list (5 real modules, verbatim copy).
+   Right: one console sheet whose state changes on hover/click/arrow keys.
+4. **Enterprise complexity + CTA.** Editorial split (sticky headline, three hairline text
+   blocks), then a clean type-only CTA.
 
 ## 5. Implementation
 
-Self-contained static site: `index.html` + `css/tokens.css` + `css/styles.css` + `js/main.js`.
-No frameworks. Canvas is DPR-capped (1.5), pauses offscreen and on hidden tab; scroll handlers
-run through one rAF; pins disable under 1001px and under reduced motion.
-
-Repo: github.com/jonahmeyuhas-web/EvolveNXT-Redesign (GitHub Pages ready).
+Self-contained static site: `index.html`, `css/tokens.css`, `css/styles.css`, `js/main.js`.
+No frameworks, no canvas, no decorative SVG. Pins disable under 1001px and reduced motion
+(stacked lifecycle variant). Repo: github.com/jonahmeyuhas-web/EvolveNXT-Redesign.

@@ -43,26 +43,65 @@
 
   <main id="main">
     <!-- ====================== MOVEMENT 1 · CINEMATIC HERO ====================== -->
-    <!-- Full-bleed living distribution network. Scroll shifts perspective, draws
-         routes, and fades the headline upward. The network lights wherever the
-         cursor moves. No dashboards, no boxes. -->
+    <!-- A layered operating-system surface, angled and cropped off the right
+         edge. Camera drift + a soft scanning light + rows gently activating.
+         Scroll eases the surface flat while the headline lifts away. -->
     <section class="hero" id="hero">
       <div class="hero__stage">
-        <canvas class="hero__net" id="heroNet" aria-hidden="true"></canvas>
+        <div class="hero__copy" id="heroCopy">
+          <div class="container">
+            <p class="eyebrow" data-entrance>Insurance distribution software</p>
+            <h1 class="hero__title" aria-label="The operating system for insurance distribution.">
+              <span class="line"><span>The operating system</span></span>
+              <span class="line"><span>for insurance distribution.</span></span>
+            </h1>
+            <p class="hero__lead" data-entrance data-entrance-delay="2">
+              EvolveNXT connects producer onboarding, hierarchy, compensation, enrollment,
+              CRM, and lead management in one platform built for modern insurance carriers.
+            </p>
+            <div class="hero__cta" data-entrance data-entrance-delay="3">
+              <a class="btn btn--primary btn--lg" href="#cta">Request a demo</a>
+              <a class="btn btn--ghost btn--lg" href="#system">Explore platform</a>
+            </div>
+          </div>
+        </div>
 
-        <div class="container hero__copy" id="heroCopy">
-          <p class="eyebrow" data-entrance>Insurance distribution software</p>
-          <h1 class="hero__title" aria-label="The operating system for insurance distribution.">
-            <span class="line"><span>The operating system</span></span>
-            <span class="line"><span>for insurance distribution.</span></span>
-          </h1>
-          <p class="hero__lead" data-entrance data-entrance-delay="2">
-            EvolveNXT connects producer onboarding, hierarchy, compensation, enrollment,
-            CRM, and lead management in one platform built for modern insurance carriers.
-          </p>
-          <div class="hero__cta" data-entrance data-entrance-delay="3">
-            <a class="btn btn--primary btn--lg" href="#cta">Request a demo</a>
-            <a class="btn btn--ghost btn--lg" href="#system">Explore platform</a>
+        <div class="hero__console" id="heroConsole" aria-hidden="true">
+          <div class="hero__drift">
+            <!-- back layer: reporting -->
+            <div class="sheet sheet--back">
+              <div class="sheet__bar"><span class="sheet__name">Reporting</span><span class="sheet__meta">Distribution health</span></div>
+              <div class="irow"><span>Production activity</span><span class="istatus">Available</span></div>
+              <div class="irow"><span>Compensation summary</span><span class="istatus">Available</span></div>
+              <div class="irow"><span>Appointment status</span><span class="istatus">Current</span></div>
+              <div class="irow"><span>Audit trail</span><span class="istatus is-live">Recording</span></div>
+            </div>
+
+            <!-- main layer: the operating surface -->
+            <div class="sheet sheet--main">
+              <span class="scan" aria-hidden="true"></span>
+              <div class="sheet__bar">
+                <span class="sheet__name">Producer onboarding</span>
+                <span class="sheet__meta">Workflow</span>
+              </div>
+              <div class="itabs">
+                <span class="is-active">Contracting</span><span>Licensing</span><span>Appointment</span><span>Readiness</span>
+              </div>
+              <div class="irow" style="--i:0"><span>Producer agreement</span><span class="istatus">Signed</span></div>
+              <div class="irow" style="--i:1"><span>License verification</span><span class="istatus">Complete</span></div>
+              <div class="irow" style="--i:2"><span>Carrier appointment</span><span class="istatus is-live">In review</span></div>
+              <div class="irow" style="--i:3"><span>Hierarchy placement</span><span class="istatus">Queued</span></div>
+              <div class="irow" style="--i:4"><span>Commission rules</span><span class="istatus">Applied</span></div>
+              <div class="irow" style="--i:5"><span>Portal access</span><span class="istatus">Ready</span></div>
+            </div>
+
+            <!-- front layer: activity trail -->
+            <div class="sheet sheet--front">
+              <div class="sheet__bar"><span class="sheet__name">Portal activity</span></div>
+              <div class="irow"><span>Agreement signed</span></div>
+              <div class="irow"><span>Documents submitted</span></div>
+              <div class="irow"><span>Notification delivered</span></div>
+            </div>
           </div>
         </div>
 
@@ -70,60 +109,116 @@
       </div>
     </section>
 
-    <!-- ============== MOVEMENT 2 · SCROLL-DRIVEN DISTRIBUTION SYSTEM =========== -->
-    <!-- One continuous line activates seven stages as the user scrolls.
-         Desktop: pinned and scrubbed. Mobile / reduced motion: the stacked
-         variant below is shown instead. -->
+    <!-- ============== MOVEMENT 2 · LIFECYCLE AS A PRODUCT STORY ================ -->
+    <!-- Pinned. Left: active stage. Right: one product surface whose interface
+         state transforms per stage. No lines, no nodes, no timeline. -->
     <section class="flow" id="system">
       <div class="flow__stage" id="flowStage">
-        <canvas class="flow__bg" id="flowBg" aria-hidden="true"></canvas>
+        <div class="container flow__grid">
+          <div class="flow__left">
+            <p class="eyebrow">The distribution lifecycle</p>
+            <div class="flow__copywrap" aria-live="polite">
+              <div class="flow__copy is-active" data-copy="0">
+                <span class="flow__index">01 / 07</span>
+                <h2>Onboard</h2>
+                <p>Bring producers into the system with structured licensing, contracting, and readiness workflows.</p>
+              </div>
+              <div class="flow__copy" data-copy="1">
+                <span class="flow__index">02 / 07</span>
+                <h2>Contract</h2>
+                <p>Manage agreements, documents, and carrier requirements from one connected record.</p>
+              </div>
+              <div class="flow__copy" data-copy="2">
+                <span class="flow__index">03 / 07</span>
+                <h2>Appoint</h2>
+                <p>Track appointments and readiness across lines of business and states.</p>
+              </div>
+              <div class="flow__copy" data-copy="3">
+                <span class="flow__index">04 / 07</span>
+                <h2>Place</h2>
+                <p>Map producers into the right agency, upline, market, and hierarchy structure.</p>
+              </div>
+              <div class="flow__copy" data-copy="4">
+                <span class="flow__index">05 / 07</span>
+                <h2>Enroll</h2>
+                <p>Connect enrollment activity back to producers, customers, and carrier operations.</p>
+              </div>
+              <div class="flow__copy" data-copy="5">
+                <span class="flow__index">06 / 07</span>
+                <h2>Compensate</h2>
+                <p>Apply rules, splits, overrides, and payout logic with transparency and control.</p>
+              </div>
+              <div class="flow__copy" data-copy="6">
+                <span class="flow__index">07 / 07</span>
+                <h2>Report</h2>
+                <p>Give teams visibility into activity, performance, compensation, and distribution health.</p>
+              </div>
+            </div>
+          </div>
 
-        <div class="container flow__head">
-          <p class="eyebrow">The distribution lifecycle</p>
-        </div>
+          <div class="flow__right" aria-hidden="true">
+            <div class="sheet sheet--tall">
+              <div class="sheet__bar"><span class="sheet__name">Distribution record</span><span class="sheet__meta" id="flowIndicator">01 / 07</span></div>
 
-        <div class="container flow__copywrap" aria-live="polite">
-          <div class="flow__copy is-active" data-copy="0">
-            <h2>Onboard</h2>
-            <p>Bring producers into the system with structured licensing, contracting, and readiness workflows.</p>
-          </div>
-          <div class="flow__copy" data-copy="1">
-            <h2>Contract</h2>
-            <p>Manage agreements, documents, and carrier requirements from one connected record.</p>
-          </div>
-          <div class="flow__copy" data-copy="2">
-            <h2>Appoint</h2>
-            <p>Track appointments and readiness across lines of business and states.</p>
-          </div>
-          <div class="flow__copy" data-copy="3">
-            <h2>Place</h2>
-            <p>Map producers into the right agency, upline, market, and hierarchy structure.</p>
-          </div>
-          <div class="flow__copy" data-copy="4">
-            <h2>Enroll</h2>
-            <p>Connect enrollment activity back to producers, customers, and carrier operations.</p>
-          </div>
-          <div class="flow__copy" data-copy="5">
-            <h2>Compensate</h2>
-            <p>Apply rules, splits, overrides, and payout logic with transparency and control.</p>
-          </div>
-          <div class="flow__copy" data-copy="6">
-            <h2>Report</h2>
-            <p>Give teams visibility into activity, performance, compensation, and distribution health.</p>
-          </div>
-        </div>
+              <div class="lstate is-active" data-state="0">
+                <p class="igroup">Onboarding workflow</p>
+                <div class="irow" style="--i:0"><span>Licensing</span><span class="istatus is-live">In progress</span></div>
+                <div class="irow" style="--i:1"><span>Contracting</span><span class="istatus">Ready for signature</span></div>
+                <div class="irow" style="--i:2"><span>Appointment request</span><span class="istatus">Queued</span></div>
+                <div class="irow" style="--i:3"><span>Readiness checklist</span><span class="istatus">Open</span></div>
+              </div>
 
-        <ol class="flow__rail" id="flowRail" aria-hidden="true">
-          <li>Onboard</li><li>Contract</li><li>Appoint</li><li>Place</li>
-          <li>Enroll</li><li>Compensate</li><li>Report</li>
-        </ol>
+              <div class="lstate" data-state="1">
+                <p class="igroup">Agreements</p>
+                <div class="irow" style="--i:0"><span>Producer agreement</span><span class="istatus">Signed</span></div>
+                <div class="irow" style="--i:1"><span>Carrier requirements</span><span class="istatus is-live">In review</span></div>
+                <div class="irow" style="--i:2"><span>Amendment</span><span class="istatus">Draft</span></div>
+                <div class="irow" style="--i:3"><span>Approval</span><span class="istatus">Pending countersign</span></div>
+              </div>
 
-        <div class="flow__canvas" id="flowCanvas" aria-hidden="true">
-          <svg class="flow__svg" viewBox="0 0 1200 420" preserveAspectRatio="none">
-            <path id="flowPath" pathLength="1" d="M -20 336 C 150 312 240 226 400 232 C 560 238 620 148 780 146 C 930 144 1010 84 1220 62"
-                  fill="none" stroke="currentColor" stroke-width="1.4" vector-effect="non-scaling-stroke"/>
-          </svg>
-          <div class="flow__markers" id="flowMarkers"></div>
+              <div class="lstate" data-state="2">
+                <p class="igroup">Appointments · Lines of business</p>
+                <div class="irow" style="--i:0"><span>Health</span><span class="istatus">Appointed</span></div>
+                <div class="irow" style="--i:1"><span>Life &amp; Annuity</span><span class="istatus is-live">In review</span></div>
+                <div class="irow" style="--i:2"><span>Property &amp; Casualty</span><span class="istatus">Submitted</span></div>
+                <div class="irow" style="--i:3"><span>State filings</span><span class="istatus">In progress</span></div>
+              </div>
+
+              <div class="lstate" data-state="3">
+                <p class="igroup">Hierarchy placement</p>
+                <div class="irow" style="--i:0"><span>Carrier</span><span class="istatus">Root</span></div>
+                <div class="irow ind-1" style="--i:1"><span>Agency</span><span class="istatus">Confirmed</span></div>
+                <div class="irow ind-2" style="--i:2"><span>Upline</span><span class="istatus">Confirmed</span></div>
+                <div class="irow ind-3" style="--i:3"><span>Producer</span><span class="istatus is-live">Placing</span></div>
+              </div>
+
+              <div class="lstate" data-state="4">
+                <p class="igroup">Enrollment activity</p>
+                <div class="irow" style="--i:0"><span>Enrollment started</span><span class="istatus">Producer linked</span></div>
+                <div class="irow" style="--i:1"><span>Application</span><span class="istatus is-live">Submitted</span></div>
+                <div class="irow" style="--i:2"><span>Customer record</span><span class="istatus">Connected</span></div>
+                <div class="irow" style="--i:3"><span>Carrier operations</span><span class="istatus">Processing</span></div>
+              </div>
+
+              <div class="lstate" data-state="5">
+                <p class="igroup">Commission rules</p>
+                <div class="irow" style="--i:0"><span>Base schedule</span><span class="istatus">Applied</span></div>
+                <div class="irow" style="--i:1"><span>Override group</span><span class="istatus">Active</span></div>
+                <div class="irow" style="--i:2"><span>Split logic</span><span class="istatus">Configured</span></div>
+                <p class="igroup" style="--i:3">Payout</p>
+                <div class="irow" style="--i:4"><span>Review state</span><span class="istatus is-live">Approved</span></div>
+              </div>
+
+              <div class="lstate" data-state="6">
+                <p class="igroup">Reporting</p>
+                <div class="irow" style="--i:0"><span>Production activity</span><span class="istatus">Available</span></div>
+                <div class="irow" style="--i:1"><span>Compensation summary</span><span class="istatus">Available</span></div>
+                <div class="irow" style="--i:2"><span>Distribution health</span><span class="istatus">Current</span></div>
+                <p class="igroup" style="--i:3">Audit</p>
+                <div class="irow" style="--i:4"><span>Audit trail</span><span class="istatus is-live">Complete record</span></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -142,11 +237,11 @@
       </div>
     </section>
 
-    <!-- ============ MOVEMENT 3 · PRODUCT SUITE AS ONE INTERACTIVE SURFACE ======= -->
+    <!-- ============== MOVEMENT 3 · THE PRODUCT CONSOLE ========================= -->
     <section class="suite" id="products">
       <div class="container">
         <p class="eyebrow" data-reveal>The platform</p>
-        <h2 class="suite__title" data-reveal>One product surface.<br/>Five connected capabilities.</h2>
+        <h2 class="suite__title" data-reveal>One console.<br/>Five connected capabilities.</h2>
       </div>
 
       <div class="container surface">
@@ -179,58 +274,61 @@
         <div class="surface__divider" aria-hidden="true"></div>
 
         <div class="surface__view" id="suiteView" aria-hidden="true">
-          <!-- 0 · Onboarding: readiness trail -->
-          <svg class="scene is-active" viewBox="0 0 640 420">
-            <path pathLength="1" d="M60 90 H580" />
-            <path pathLength="1" d="M60 90 V330 M60 170 H320 M60 250 H430 M60 330 H250" />
-            <path pathLength="1" class="tick" d="M300 158 l8 10 14 -20" />
-            <path pathLength="1" class="tick" d="M410 238 l8 10 14 -20" />
-            <text x="60" y="66">Licensing</text>
-            <text x="342" y="176">Contracting</text>
-            <text x="452" y="256">Appointment</text>
-            <text x="272" y="336">Readiness</text>
-          </svg>
-          <!-- 1 · Compensation: rules and splits -->
-          <svg class="scene" viewBox="0 0 640 420">
-            <path pathLength="1" d="M60 210 H260" />
-            <path pathLength="1" d="M260 210 C330 210 330 110 400 110 H560" />
-            <path pathLength="1" d="M260 210 H560" />
-            <path pathLength="1" d="M260 210 C330 210 330 310 400 310 H560" />
-            <text x="60" y="192">Commission rules</text>
-            <text x="470" y="92">Override</text>
-            <text x="492" y="192">Base</text>
-            <text x="486" y="292">Split</text>
-          </svg>
-          <!-- 2 · Portal: activity stream -->
-          <svg class="scene" viewBox="0 0 640 420">
-            <path pathLength="1" d="M80 80 V340" />
-            <path pathLength="1" d="M80 110 H400 M80 180 H520 M80 250 H360 M80 320 H460" />
-            <text x="416" y="116">Status update</text>
-            <text x="536" y="186">Notification</text>
-            <text x="376" y="256">Document</text>
-            <text x="476" y="326">Portal activity</text>
-          </svg>
-          <!-- 3 · Enrollment: connected steps -->
-          <svg class="scene" viewBox="0 0 640 420">
-            <path pathLength="1" d="M60 320 L200 320 L260 220 L400 220 L460 120 L590 120" />
-            <text x="76" y="300">Producer</text>
-            <text x="272" y="200">Customer</text>
-            <text x="474" y="100">Carrier operations</text>
-          </svg>
-          <!-- 4 · CRM: relationship map -->
-          <svg class="scene" viewBox="0 0 640 420">
-            <path pathLength="1" d="M140 300 L320 140 L520 260 M320 140 L200 90 M320 140 L480 80 M140 300 L360 330 L520 260" />
-            <text x="96" y="330">Lead</text>
-            <text x="292" y="122">Producer</text>
-            <text x="530" y="290">Team</text>
-            <text x="140" y="76">Channel</text>
-            <text x="494" y="62">Market</text>
-          </svg>
+          <div class="sheet sheet--tall">
+            <div class="sheet__bar"><span class="sheet__name" id="consoleName">Producer onboarding</span><span class="sheet__meta">Console</span></div>
+
+            <div class="cstate is-active" data-state="0">
+              <p class="igroup">Workflow</p>
+              <div class="irow" style="--i:0"><span>Contracting</span><span class="istatus">Ready for signature</span></div>
+              <div class="irow" style="--i:1"><span>Licensing</span><span class="istatus is-live">Verification running</span></div>
+              <div class="irow" style="--i:2"><span>Appointments</span><span class="istatus">Submitted</span></div>
+              <div class="irow" style="--i:3"><span>Readiness</span><span class="istatus">Checklist open</span></div>
+              <div class="irow" style="--i:4"><span>Documents</span><span class="istatus">Collected</span></div>
+            </div>
+
+            <div class="cstate" data-state="1">
+              <p class="igroup">Rule groups</p>
+              <div class="irow" style="--i:0"><span>Commission logic</span><span class="istatus">Configured</span></div>
+              <div class="irow" style="--i:1"><span>Split categories</span><span class="istatus">Assigned</span></div>
+              <div class="irow" style="--i:2"><span>Override structure</span><span class="istatus">Active</span></div>
+              <p class="igroup" style="--i:3">Payout review</p>
+              <div class="irow" style="--i:4"><span>Calculation run</span><span class="istatus is-live">In review</span></div>
+              <div class="irow" style="--i:5"><span>Approval state</span><span class="istatus">Pending</span></div>
+            </div>
+
+            <div class="cstate" data-state="2">
+              <p class="igroup">Portal activity</p>
+              <div class="irow" style="--i:0"><span>Status tracking</span><span class="istatus">Live</span></div>
+              <div class="irow" style="--i:1"><span>Alerts</span><span class="istatus is-live">Delivered</span></div>
+              <div class="irow" style="--i:2"><span>Readiness</span><span class="istatus">Ready to sell</span></div>
+              <div class="irow" style="--i:3"><span>Tasks</span><span class="istatus">Assigned</span></div>
+              <div class="irow" style="--i:4"><span>Documents</span><span class="istatus">Shared</span></div>
+            </div>
+
+            <div class="cstate" data-state="3">
+              <p class="igroup">Enrollment workflow</p>
+              <div class="irow" style="--i:0"><span>Producer</span><span class="istatus">Linked</span></div>
+              <div class="irow" style="--i:1"><span>Customer</span><span class="istatus">Connected</span></div>
+              <div class="irow" style="--i:2"><span>Carrier operations</span><span class="istatus is-live">Processing</span></div>
+              <p class="igroup" style="--i:3">Submissions</p>
+              <div class="irow" style="--i:4"><span>Application</span><span class="istatus">Submitted</span></div>
+              <div class="irow" style="--i:5"><span>Confirmation</span><span class="istatus">Issued</span></div>
+            </div>
+
+            <div class="cstate" data-state="4">
+              <p class="igroup">Relationship records</p>
+              <div class="irow" style="--i:0"><span>Lead stage</span><span class="istatus is-live">Qualifying</span></div>
+              <div class="irow" style="--i:1"><span>Channel</span><span class="istatus">Assigned</span></div>
+              <div class="irow" style="--i:2"><span>Team</span><span class="istatus">Routed</span></div>
+              <div class="irow" style="--i:3"><span>Market</span><span class="istatus">Mapped</span></div>
+              <div class="irow" style="--i:4"><span>Activity</span><span class="istatus">Tracked</span></div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ============ MOVEMENT 4 · ENTERPRISE COMPLEXITY / FINAL CTA ============== -->
+    <!-- ============== MOVEMENT 4 · ENTERPRISE COMPLEXITY / CTA ================= -->
     <section class="complexity" id="complexity">
       <div class="container cx">
         <div class="cx__left">
@@ -255,7 +353,6 @@
     </section>
 
     <section class="cta" id="cta">
-      <canvas class="cta__net" id="ctaNet" aria-hidden="true"></canvas>
       <div class="container cta__inner">
         <h2 class="cta__title" data-reveal>Modernize the way insurance distribution gets managed.</h2>
         <p class="cta__lead" data-reveal data-reveal-delay="1">
