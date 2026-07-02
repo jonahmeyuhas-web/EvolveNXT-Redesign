@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>EvolveNXT · The operating system for insurance distribution</title>
-  <meta name="description" content="EvolveNXT helps insurance carriers manage producer onboarding, hierarchy, compensation, enrollment, CRM, and lead management from one connected platform." />
+  <meta name="description" content="EvolveNXT connects producer onboarding, hierarchy, compensation, enrollment, CRM, and lead management in one platform built for modern insurance carriers." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -28,76 +28,41 @@
         <span class="logo__word">evolve<b>NXT</b></span>
       </a>
       <nav class="nav__links" id="navLinks" aria-label="Primary">
-        <a href="#flow">Platform</a>
-        <a href="#modules">Products</a>
+        <a href="#system">Platform</a>
+        <a href="#products">Products</a>
         <a href="#complexity">Solutions</a>
-        <a href="#company">About</a>
+        <a href="#company">Company</a>
         <a href="#cta">Contact</a>
       </nav>
       <div class="nav__actions">
-        <a class="btn btn--primary btn--sm" href="#cta">Request a demo</a>
+        <a class="btn btn--primary" href="#cta">Request a demo</a>
       </div>
       <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
     </div>
   </header>
 
   <main id="main">
-    <!-- ============================ 1 · HERO ============================ -->
-    <!-- Scroll-driven: the section is taller than the viewport; the stage is
-         sticky and scrolling scrubs the command-center canvas + panels.
-         A Higgsfield loop can drop in later as a layer under the canvas. -->
+    <!-- ====================== MOVEMENT 1 · CINEMATIC HERO ====================== -->
+    <!-- Full-bleed living distribution network. Scroll shifts perspective, draws
+         routes, and fades the headline upward. The network lights wherever the
+         cursor moves. No dashboards, no boxes. -->
     <section class="hero" id="hero">
       <div class="hero__stage">
         <canvas class="hero__net" id="heroNet" aria-hidden="true"></canvas>
-        <div class="hero__shade" aria-hidden="true"></div>
 
-        <div class="container hero__grid">
-          <div class="hero__copy">
-            <p class="eyebrow" data-entrance>Insurance distribution, unified</p>
-            <h1 class="hero__title" aria-label="The operating system for insurance distribution.">
-              <span class="line"><span>The operating system</span></span>
-              <span class="line"><span>for insurance distribution.</span></span>
-            </h1>
-            <p class="hero__lead" data-entrance data-entrance-delay="2">
-              EvolveNXT helps insurance carriers manage producer onboarding, hierarchy,
-              compensation, enrollment, CRM, and lead management from one connected platform.
-            </p>
-            <div class="hero__cta" data-entrance data-entrance-delay="3">
-              <a class="btn btn--primary btn--lg" href="#cta">Request a demo</a>
-              <a class="btn btn--ghost btn--lg" href="#flow">Explore the platform</a>
-            </div>
-          </div>
-
-          <div class="hero__panels" aria-hidden="true">
-            <div class="hero__panelwrap" data-depth="1">
-              <div class="panel glass" data-entrance data-entrance-delay="2">
-                <span class="panel__label">Producer file</span>
-                <ul class="panel__rows">
-                  <li><span>Licensing</span><span class="status status--ok">Verified</span></li>
-                  <li><span>Contracting</span><span class="status status--ok">Executed</span></li>
-                  <li><span>Appointment</span><span class="status status--live">Active</span></li>
-                </ul>
-              </div>
-            </div>
-            <div class="hero__panelwrap" data-depth="2">
-              <div class="panel glass" data-entrance data-entrance-delay="4">
-                <span class="panel__label">Hierarchy</span>
-                <svg class="panel__tree" viewBox="0 0 220 84" aria-hidden="true">
-                  <path d="M110 18 V38 M110 38 H50 V60 M110 38 V60 M110 38 H170 V60" fill="none" stroke="currentColor" stroke-width="1.2"/>
-                  <rect x="86" y="6" width="48" height="14"/><text x="110" y="16">Carrier</text>
-                  <rect x="26" y="60" width="48" height="14"/><text x="50" y="70">Agency</text>
-                  <rect x="86" y="60" width="48" height="14"/><text x="110" y="70">Agency</text>
-                  <rect x="146" y="60" width="48" height="14"/><text x="170" y="70">Producer</text>
-                </svg>
-              </div>
-            </div>
-            <div class="hero__panelwrap" data-depth="3">
-              <div class="panel glass" data-entrance data-entrance-delay="5">
-                <span class="panel__label">Compensation</span>
-                <div class="panel__bars"><i></i><i></i><i></i><i></i><i></i><i></i></div>
-                <div class="panel__row"><span>Current cycle</span><span class="status status--ok">Complete</span></div>
-              </div>
-            </div>
+        <div class="container hero__copy" id="heroCopy">
+          <p class="eyebrow" data-entrance>Insurance distribution software</p>
+          <h1 class="hero__title" aria-label="The operating system for insurance distribution.">
+            <span class="line"><span>The operating system</span></span>
+            <span class="line"><span>for insurance distribution.</span></span>
+          </h1>
+          <p class="hero__lead" data-entrance data-entrance-delay="2">
+            EvolveNXT connects producer onboarding, hierarchy, compensation, enrollment,
+            CRM, and lead management in one platform built for modern insurance carriers.
+          </p>
+          <div class="hero__cta" data-entrance data-entrance-delay="3">
+            <a class="btn btn--primary btn--lg" href="#cta">Request a demo</a>
+            <a class="btn btn--ghost btn--lg" href="#system">Explore platform</a>
           </div>
         </div>
 
@@ -105,142 +70,193 @@
       </div>
     </section>
 
-    <!-- ====================== 2 · DISTRIBUTION OS FLOW ================== -->
-    <section class="flow" id="flow">
-      <div class="flow__stage">
-        <div class="container">
-          <div class="section__head" data-reveal>
-            <p class="eyebrow">The distribution lifecycle</p>
-            <h2 class="section__title">One connected system, end to end.</h2>
-            <p class="section__lead">From producer onboarding to compensation, EvolveNXT connects every step of the distribution lifecycle.</p>
-          </div>
+    <!-- ============== MOVEMENT 2 · SCROLL-DRIVEN DISTRIBUTION SYSTEM =========== -->
+    <!-- One continuous line activates seven stages as the user scrolls.
+         Desktop: pinned and scrubbed. Mobile / reduced motion: the stacked
+         variant below is shown instead. -->
+    <section class="flow" id="system">
+      <div class="flow__stage" id="flowStage">
+        <canvas class="flow__bg" id="flowBg" aria-hidden="true"></canvas>
 
-          <div class="osflow" id="osflow">
-            <div class="osflow__rail" aria-hidden="true"><span class="osflow__fill" id="osfill"></span></div>
-            <ol class="osflow__steps">
-              <li class="osnode" data-step="0"><span class="osnode__mark"></span><h3>Onboard</h3><p>Producer intake</p></li>
-              <li class="osnode" data-step="1"><span class="osnode__mark"></span><h3>Contract</h3><p>Agreements executed</p></li>
-              <li class="osnode" data-step="2"><span class="osnode__mark"></span><h3>Appoint</h3><p>Carrier appointments</p></li>
-              <li class="osnode" data-step="3"><span class="osnode__mark"></span><h3>Place</h3><p>Hierarchy position</p></li>
-              <li class="osnode" data-step="4"><span class="osnode__mark"></span><h3>Enroll</h3><p>Digital enrollment</p></li>
-              <li class="osnode" data-step="5"><span class="osnode__mark"></span><h3>Compensate</h3><p>Programs calculated</p></li>
-              <li class="osnode" data-step="6"><span class="osnode__mark"></span><h3>Report</h3><p>Distribution insight</p></li>
-            </ol>
+        <div class="container flow__head">
+          <p class="eyebrow">The distribution lifecycle</p>
+        </div>
+
+        <div class="container flow__copywrap" aria-live="polite">
+          <div class="flow__copy is-active" data-copy="0">
+            <h2>Onboard</h2>
+            <p>Bring producers into the system with structured licensing, contracting, and readiness workflows.</p>
+          </div>
+          <div class="flow__copy" data-copy="1">
+            <h2>Contract</h2>
+            <p>Manage agreements, documents, and carrier requirements from one connected record.</p>
+          </div>
+          <div class="flow__copy" data-copy="2">
+            <h2>Appoint</h2>
+            <p>Track appointments and readiness across lines of business and states.</p>
+          </div>
+          <div class="flow__copy" data-copy="3">
+            <h2>Place</h2>
+            <p>Map producers into the right agency, upline, market, and hierarchy structure.</p>
+          </div>
+          <div class="flow__copy" data-copy="4">
+            <h2>Enroll</h2>
+            <p>Connect enrollment activity back to producers, customers, and carrier operations.</p>
+          </div>
+          <div class="flow__copy" data-copy="5">
+            <h2>Compensate</h2>
+            <p>Apply rules, splits, overrides, and payout logic with transparency and control.</p>
+          </div>
+          <div class="flow__copy" data-copy="6">
+            <h2>Report</h2>
+            <p>Give teams visibility into activity, performance, compensation, and distribution health.</p>
           </div>
         </div>
+
+        <ol class="flow__rail" id="flowRail" aria-hidden="true">
+          <li>Onboard</li><li>Contract</li><li>Appoint</li><li>Place</li>
+          <li>Enroll</li><li>Compensate</li><li>Report</li>
+        </ol>
+
+        <div class="flow__canvas" id="flowCanvas" aria-hidden="true">
+          <svg class="flow__svg" viewBox="0 0 1200 420" preserveAspectRatio="none">
+            <path id="flowPath" pathLength="1" d="M -20 336 C 150 312 240 226 400 232 C 560 238 620 148 780 146 C 930 144 1010 84 1220 62"
+                  fill="none" stroke="currentColor" stroke-width="1.4" vector-effect="non-scaling-stroke"/>
+          </svg>
+          <div class="flow__markers" id="flowMarkers"></div>
+        </div>
+      </div>
+
+      <!-- stacked variant: mobile + reduced motion -->
+      <div class="flow__stack container">
+        <p class="eyebrow">The distribution lifecycle</p>
+        <ol class="fstack">
+          <li><h3>Onboard</h3><p>Bring producers into the system with structured licensing, contracting, and readiness workflows.</p></li>
+          <li><h3>Contract</h3><p>Manage agreements, documents, and carrier requirements from one connected record.</p></li>
+          <li><h3>Appoint</h3><p>Track appointments and readiness across lines of business and states.</p></li>
+          <li><h3>Place</h3><p>Map producers into the right agency, upline, market, and hierarchy structure.</p></li>
+          <li><h3>Enroll</h3><p>Connect enrollment activity back to producers, customers, and carrier operations.</p></li>
+          <li><h3>Compensate</h3><p>Apply rules, splits, overrides, and payout logic with transparency and control.</p></li>
+          <li><h3>Report</h3><p>Give teams visibility into activity, performance, compensation, and distribution health.</p></li>
+        </ol>
       </div>
     </section>
 
-    <!-- ===================== 3 · CORE PLATFORM MODULES =================== -->
-    <section class="section modules" id="modules">
+    <!-- ============ MOVEMENT 3 · PRODUCT SUITE AS ONE INTERACTIVE SURFACE ======= -->
+    <section class="suite" id="products">
       <div class="container">
-        <div class="section__head" data-reveal>
-          <p class="eyebrow">Core platform</p>
-          <h2 class="section__title">Five modules. One connected system.</h2>
+        <p class="eyebrow" data-reveal>The platform</p>
+        <h2 class="suite__title" data-reveal>One product surface.<br/>Five connected capabilities.</h2>
+      </div>
+
+      <div class="container surface">
+        <div class="surface__nav" role="tablist" aria-label="Products" id="suiteNav">
+          <button class="surface__item is-active" role="tab" aria-selected="true" data-i="0">
+            <span class="surface__index">01</span>Producer Onboarding
+          </button>
+          <button class="surface__item" role="tab" aria-selected="false" data-i="1">
+            <span class="surface__index">02</span>Incentive Compensation
+          </button>
+          <button class="surface__item" role="tab" aria-selected="false" data-i="2">
+            <span class="surface__index">03</span>Producer Portal &amp; Notifications
+          </button>
+          <button class="surface__item" role="tab" aria-selected="false" data-i="3">
+            <span class="surface__index">04</span>Web Enrollment
+          </button>
+          <button class="surface__item" role="tab" aria-selected="false" data-i="4">
+            <span class="surface__index">05</span>CRM &amp; Lead Management
+          </button>
+
+          <div class="surface__copywrap">
+            <p class="surface__copy is-active" data-copy="0">Streamline contracting, licensing, appointments, and readiness workflows for producers across every line of business.</p>
+            <p class="surface__copy" data-copy="1">Configure, calculate, and manage complex compensation programs with accuracy, transparency, and operational control.</p>
+            <p class="surface__copy" data-copy="2">Give producers a centralized place to track status, access tools, receive updates, and stay ready to sell.</p>
+            <p class="surface__copy" data-copy="3">Support digital enrollment workflows that connect producers, customers, and carrier operations.</p>
+            <p class="surface__copy" data-copy="4">Manage relationships, leads, and distribution activity across teams, channels, and markets.</p>
+          </div>
         </div>
 
-        <div class="mod-grid">
-          <article class="mod glass" data-reveal>
-            <div class="mod__preview mod__preview--onboard" aria-hidden="true">
-              <div class="prev-row"><i class="prev-check"></i><span></span></div>
-              <div class="prev-row"><i class="prev-check"></i><span></span></div>
-              <div class="prev-row"><i class="prev-check"></i><span></span></div>
-            </div>
-            <h3>Producer Onboarding</h3>
-            <p>Streamline contracting, licensing, appointments, and readiness workflows for producers across every line of business.</p>
-          </article>
+        <div class="surface__divider" aria-hidden="true"></div>
 
-          <article class="mod glass" data-reveal data-reveal-delay="1">
-            <div class="mod__preview mod__preview--comp" aria-hidden="true">
-              <div class="prev-bars"><i></i><i></i><i></i><i></i><i></i></div>
-            </div>
-            <h3>Incentive Compensation</h3>
-            <p>Configure, calculate, and manage complex compensation programs with accuracy, transparency, and control.</p>
-          </article>
-
-          <article class="mod glass" data-reveal data-reveal-delay="2">
-            <div class="mod__preview mod__preview--portal" aria-hidden="true">
-              <div class="prev-row"><span></span><span class="prev-pill"></span></div>
-              <div class="prev-row"><span></span><span class="prev-pill"></span></div>
-              <div class="prev-toast">Notification</div>
-            </div>
-            <h3>Producer Portal &amp; Notifications</h3>
-            <p>Give producers a centralized place to track status, access tools, receive updates, and stay ready to sell.</p>
-          </article>
-
-          <article class="mod glass mod--wide" data-reveal>
-            <div class="mod__preview mod__preview--enroll" aria-hidden="true">
-              <div class="prev-stepper">
-                <i class="on"></i><em></em><i class="on"></i><em></em><i></i><em></em><i></i>
-              </div>
-            </div>
-            <h3>Web Enrollment</h3>
-            <p>Support digital enrollment workflows that connect producers, customers, and carrier operations.</p>
-          </article>
-
-          <article class="mod glass mod--wide" data-reveal data-reveal-delay="1">
-            <div class="mod__preview mod__preview--crm" aria-hidden="true">
-              <div class="prev-cols">
-                <div class="prev-col"><i></i><i></i></div>
-                <div class="prev-col"><i class="prev-move"></i></div>
-                <div class="prev-col"><i></i></div>
-              </div>
-            </div>
-            <h3>CRM &amp; Lead Management</h3>
-            <p>Manage relationships, leads, and distribution activity across teams, channels, and markets.</p>
-          </article>
+        <div class="surface__view" id="suiteView" aria-hidden="true">
+          <!-- 0 · Onboarding: readiness trail -->
+          <svg class="scene is-active" viewBox="0 0 640 420">
+            <path pathLength="1" d="M60 90 H580" />
+            <path pathLength="1" d="M60 90 V330 M60 170 H320 M60 250 H430 M60 330 H250" />
+            <path pathLength="1" class="tick" d="M300 158 l8 10 14 -20" />
+            <path pathLength="1" class="tick" d="M410 238 l8 10 14 -20" />
+            <text x="60" y="66">Licensing</text>
+            <text x="342" y="176">Contracting</text>
+            <text x="452" y="256">Appointment</text>
+            <text x="272" y="336">Readiness</text>
+          </svg>
+          <!-- 1 · Compensation: rules and splits -->
+          <svg class="scene" viewBox="0 0 640 420">
+            <path pathLength="1" d="M60 210 H260" />
+            <path pathLength="1" d="M260 210 C330 210 330 110 400 110 H560" />
+            <path pathLength="1" d="M260 210 H560" />
+            <path pathLength="1" d="M260 210 C330 210 330 310 400 310 H560" />
+            <text x="60" y="192">Commission rules</text>
+            <text x="470" y="92">Override</text>
+            <text x="492" y="192">Base</text>
+            <text x="486" y="292">Split</text>
+          </svg>
+          <!-- 2 · Portal: activity stream -->
+          <svg class="scene" viewBox="0 0 640 420">
+            <path pathLength="1" d="M80 80 V340" />
+            <path pathLength="1" d="M80 110 H400 M80 180 H520 M80 250 H360 M80 320 H460" />
+            <text x="416" y="116">Status update</text>
+            <text x="536" y="186">Notification</text>
+            <text x="376" y="256">Document</text>
+            <text x="476" y="326">Portal activity</text>
+          </svg>
+          <!-- 3 · Enrollment: connected steps -->
+          <svg class="scene" viewBox="0 0 640 420">
+            <path pathLength="1" d="M60 320 L200 320 L260 220 L400 220 L460 120 L590 120" />
+            <text x="76" y="300">Producer</text>
+            <text x="272" y="200">Customer</text>
+            <text x="474" y="100">Carrier operations</text>
+          </svg>
+          <!-- 4 · CRM: relationship map -->
+          <svg class="scene" viewBox="0 0 640 420">
+            <path pathLength="1" d="M140 300 L320 140 L520 260 M320 140 L200 90 M320 140 L480 80 M140 300 L360 330 L520 260" />
+            <text x="96" y="330">Lead</text>
+            <text x="292" y="122">Producer</text>
+            <text x="530" y="290">Team</text>
+            <text x="140" y="76">Channel</text>
+            <text x="494" y="62">Market</text>
+          </svg>
         </div>
       </div>
     </section>
 
-    <!-- ================== 4 · BUILT FOR INSURANCE COMPLEXITY ============= -->
+    <!-- ============ MOVEMENT 4 · ENTERPRISE COMPLEXITY / FINAL CTA ============== -->
     <section class="complexity" id="complexity">
-      <div class="container">
-        <div class="section__head" data-reveal>
-          <p class="eyebrow eyebrow--paper">Built for insurance complexity</p>
-          <h2 class="section__title section__title--paper">Made for the way distribution actually works.</h2>
+      <div class="container cx">
+        <div class="cx__left">
+          <p class="eyebrow" data-reveal>Built for enterprise</p>
+          <h2 data-reveal>Built for the complexity of modern insurance distribution.</h2>
         </div>
-
-        <div class="cx-grid">
-          <div class="cx" data-reveal>
-            <svg class="cx__diagram" viewBox="0 0 200 56" aria-hidden="true">
-              <rect x="4" y="14" width="40" height="28"/><text x="24" y="32">H</text>
-              <rect x="54" y="14" width="40" height="28"/><text x="74" y="32">L&amp;A</text>
-              <rect x="104" y="14" width="40" height="28"/><text x="124" y="32">P&amp;C</text>
-              <rect x="154" y="14" width="40" height="28"/><text x="174" y="32">AG</text>
-            </svg>
+        <div class="cx__right">
+          <div class="cx__block" data-reveal>
             <h3>Multiple lines of business</h3>
-            <p>Health, Life &amp; Annuity, Property &amp; Casualty, and agency distribution.</p>
+            <p>Health, Life &amp; Annuity, Property &amp; Casualty, and agency distribution in one connected operating model.</p>
           </div>
-          <div class="cx" data-reveal data-reveal-delay="1">
-            <svg class="cx__diagram" viewBox="0 0 200 56" aria-hidden="true">
-              <path d="M100 10 V24 M100 24 H48 V40 M100 24 V40 M100 24 H152 V40" fill="none" stroke-width="1.2"/>
-              <rect x="82" y="2" width="36" height="12"/>
-              <rect x="30" y="40" width="36" height="12"/>
-              <rect x="82" y="40" width="36" height="12"/>
-              <rect x="134" y="40" width="36" height="12"/>
-            </svg>
+          <div class="cx__block" data-reveal data-reveal-delay="1">
             <h3>Complex hierarchies</h3>
-            <p>Support for producer relationships, uplines, agencies, channels, and organizational structures.</p>
+            <p>Support producer relationships, uplines, agencies, channels, and organizational structures without losing visibility.</p>
           </div>
-          <div class="cx" data-reveal data-reveal-delay="2">
-            <svg class="cx__diagram" viewBox="0 0 200 56" aria-hidden="true">
-              <path d="M10 14 H190 M10 28 H190 M10 42 H190" stroke-width="1.2"/>
-              <rect x="58" y="9" width="10" height="10"/>
-              <rect x="128" y="23" width="10" height="10"/>
-              <rect x="86" y="37" width="10" height="10"/>
-            </svg>
+          <div class="cx__block" data-reveal data-reveal-delay="2">
             <h3>Enterprise control</h3>
-            <p>Configurable workflows, reporting, audit visibility, and operational consistency.</p>
+            <p>Configurable workflows, audit visibility, reporting, and operational consistency across teams and markets.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ============================ 5 · FINAL CTA ======================== -->
     <section class="cta" id="cta">
       <canvas class="cta__net" id="ctaNet" aria-hidden="true"></canvas>
-      <div class="container container--narrow cta__inner">
+      <div class="container cta__inner">
         <h2 class="cta__title" data-reveal>Modernize the way insurance distribution gets managed.</h2>
         <p class="cta__lead" data-reveal data-reveal-delay="1">
           See how EvolveNXT brings onboarding, compensation, enrollment, producer tools,
@@ -253,7 +269,7 @@
     </section>
   </main>
 
-  <!-- =============================== FOOTER ============================== -->
+  <!-- ================================ FOOTER ================================ -->
   <footer class="footer" id="company">
     <div class="container footer__grid">
       <div class="footer__brand">
@@ -267,7 +283,7 @@
         <p class="footer__tag">Distribution management software for insurance carriers across Health, Life &amp; Annuity, and Property &amp; Casualty.</p>
       </div>
       <nav class="footer__col" aria-label="Platform"><h4>Platform</h4>
-        <a href="#modules">Producer Onboarding</a><a href="#modules">Incentive Compensation</a><a href="#modules">Producer Portal</a><a href="#modules">Web Enrollment</a><a href="#modules">CRM &amp; Leads</a>
+        <a href="#products">Producer Onboarding</a><a href="#products">Incentive Compensation</a><a href="#products">Producer Portal</a><a href="#products">Web Enrollment</a><a href="#products">CRM &amp; Leads</a>
       </nav>
       <nav class="footer__col" aria-label="Solutions"><h4>Solutions</h4>
         <a href="#complexity">Health</a><a href="#complexity">Life &amp; Annuity</a><a href="#complexity">Property &amp; Casualty</a><a href="#complexity">Agencies</a>

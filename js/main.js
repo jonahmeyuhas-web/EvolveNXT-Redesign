@@ -1,72 +1,61 @@
 /* ==========================================================================
-   EvolveNXT - Distribution OS
-   Scroll-driven command-center hero (canvas network with moving connection
-   pulses + lifecycle nodes that light on scroll), scrubbed lifecycle flow,
-   entrance choreography, reveals. Vanilla JS. Reduced-motion aware.
+   EvolveNXT - One Continuous System
+   A living distribution network (labeled nodes, drifting flow, routes that
+   draw with scroll, cursor-proximity light), a pinned lifecycle sequence,
+   and one interactive product surface. Vanilla JS. Reduced-motion aware.
    ========================================================================== */
 (() => {
   const RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const FINE = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   const desktop = () => window.matchMedia('(min-width: 1001px)').matches;
   const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+  const smooth = t => { t = clamp(t, 0, 1); return t * t * (3 - 2 * t); };
 
-  /* ========================= NETWORK CANVAS ========================= */
-  // A calm "distribution command center": layered nodes, thin connection
-  // lines, light pulses traveling the edges, and (optionally) 7 lifecycle
-  // anchors that come online as scroll progress advances.
+  /* ============================ NETWORK ============================= */
+  // The one visual system of the site. mode 'hero' adds labeled lifecycle
+  // and entity nodes, scroll-drawn routes, and cursor-proximity lighting.
+  const CHAIN = ['Onboard', 'Contract', 'Appoint', 'Place', 'Enroll', 'Compensate', 'Report'];
+  const ENTITIES = ['Producer', 'Agency', 'Upline', 'Carrier', 'Audit trail', 'Commission rules', 'Portal activity'];
+
   function createNet(canvas, opts = {}) {
-    const { density = 1, anchors = false, baseAlpha = 1, scrub = false } = opts;
+    const { mode = 'ambient', baseAlpha = 1, density = 1 } = opts;
     const ctx = canvas.getContext('2d', { alpha: false });
-    let W = 0, H = 0, DPR = 1;
-    let nodes = [], edges = [], pulses = [];
-    let raf = null, running = false;
-    const state = { p: 0, mx: 0, my: 0, emx: 0, emy: 0 };
+    let W = 0, H = 0, field = [], labeled = [], raf = null, running = false;
+    const st = { p: 0, mx: -9999, my: -9999, emx: -9999, emy: -9999, hasMouse: false };
 
     function build() {
-      const count = Math.round(clamp((W * H) / 16000, 40, 110) * density);
-      nodes = [];
-      for (let i = 0; i < count; i++) {
-        nodes.push({
-          x: Math.random() * W,
-          y: Math.random() * H,
-          z: 0.35 + Math.random() * 0.65,          // depth for parallax
-          ph: Math.random() * Math.PI * 2,          // idle drift phase
-          anchor: -1,
+      const n = Math.round(clamp((W * H) / 17000, 40, 105) * density);
+      field = Array.from({ length: n }, () => ({
+        x: Math.random() * W, y: Math.random() * H,
+        z: 0.35 + Math.random() * 0.65,
+        vx: 0.1 + Math.random() * 0.22,           // the flow: left to right
+        ph: Math.random() * 6.28,
+      }));
+      labeled = [];
+      if (mode === 'hero') {
+        CHAIN.forEach((label, i) => {
+          const t = i / 6;
+          labeled.push({
+            label, chain: i,
+            hx: (0.08 + 0.84 * t) * W,
+            hy: (0.66 - 0.34 * t) * H + Math.sin(t * Math.PI * 1.4) * H * 0.07,
+            ph: Math.random() * 6.28,
+          });
+        });
+        ENTITIES.forEach((label, i) => {
+          labeled.push({
+            label, chain: -1,
+            hx: (0.1 + 0.8 * ((i * 0.37 + 0.15) % 1)) * W,
+            hy: (0.14 + 0.72 * ((i * 0.61 + 0.08) % 1)) * H,
+            ph: Math.random() * 6.28,
+          });
         });
       }
-      // lifecycle anchors along a gentle rising arc, biased right
-      if (anchors) {
-        for (let i = 0; i < 7; i++) {
-          const t = i / 6;
-          nodes.push({
-            x: (0.16 + 0.72 * t) * W,
-            y: (0.74 - 0.42 * t) * H + Math.sin(t * Math.PI) * H * 0.08,
-            z: 1, ph: Math.random() * 6.28, anchor: i,
-          });
-        }
-      }
-      // edges: connect near neighbours (cap per node)
-      edges = [];
-      const maxD = Math.min(W, H) * 0.22;
-      for (let i = 0; i < nodes.length; i++) {
-        let links = 0;
-        for (let j = i + 1; j < nodes.length && links < 3; j++) {
-          const dx = nodes[i].x - nodes[j].x, dy = nodes[i].y - nodes[j].y;
-          if (dx * dx + dy * dy < maxD * maxD) { edges.push([i, j]); links++; }
-        }
-      }
-      // pulses: light traveling the connections
-      const pn = Math.round(clamp(edges.length * 0.14, 8, 26) * density);
-      pulses = Array.from({ length: pn }, () => ({
-        e: (Math.random() * edges.length) | 0,
-        t: Math.random(),
-        s: 0.003 + Math.random() * 0.004,
-        violet: Math.random() < 0.12,               // restrained purple
-      }));
-      ctx.fillStyle = '#05080F'; ctx.fillRect(0, 0, W, H);
+      ctx.fillStyle = '#04070D'; ctx.fillRect(0, 0, W, H);
     }
 
     function resize() {
-      DPR = Math.min(window.devicePixelRatio || 1, 1.5);
+      const DPR = Math.min(window.devicePixelRatio || 1, 1.5);
       const r = canvas.getBoundingClientRect();
       W = Math.max(1, r.width); H = Math.max(1, r.height);
       canvas.width = W * DPR; canvas.height = H * DPR;
@@ -74,78 +63,104 @@
       build();
     }
 
-    const px = (n, now) => n.x + Math.sin(now * 0.0004 + n.ph) * 6 * n.z
-      + (state.p * -70 + state.emx * 14) * n.z;
-    const py = (n, now) => n.y + Math.cos(now * 0.00035 + n.ph) * 5 * n.z
-      + (state.p * -34 + state.emy * 10) * n.z;
+    const lx = (n, now) => n.hx + Math.sin(now * 0.00045 + n.ph) * 7 - st.p * 60;
+    const ly = (n, now) => n.hy + Math.cos(now * 0.0004 + n.ph) * 6 - st.p * 26;
+    // cursor proximity light: 0..1
+    const near = (x, y) => {
+      if (!st.hasMouse) return 0;
+      const d = Math.hypot(x - st.emx, y - st.emy);
+      return smooth(1 - d / 260);
+    };
 
     function draw(now) {
-      // eased mouse
-      state.emx += (state.mx - state.emx) * 0.05;
-      state.emy += (state.my - state.emy) * 0.05;
+      st.emx += (st.mx - st.emx) * 0.08;
+      st.emy += (st.my - st.emy) * 0.08;
 
-      // fade previous frame -> pulse trails
-      ctx.fillStyle = 'rgba(5,8,15,0.22)';
+      ctx.fillStyle = 'rgba(4,7,13,0.26)';
       ctx.fillRect(0, 0, W, H);
 
-      // slight zoom with progress
-      const s = 1 + state.p * 0.06;
+      // perspective shift with scroll: slow zoom + slight rotation
       ctx.save();
-      ctx.translate(W / 2, H / 2); ctx.scale(s, s); ctx.translate(-W / 2, -H / 2);
+      ctx.translate(W / 2, H / 2);
+      ctx.rotate((st.p - 0.15) * 0.028);
+      ctx.scale(1 + st.p * 0.07, 1 + st.p * 0.07);
+      ctx.translate(-W / 2, -H / 2);
 
-      // edges
-      for (const [a, b] of edges) {
-        const na = nodes[a], nb = nodes[b];
-        const z = (na.z + nb.z) / 2;
-        ctx.strokeStyle = `rgba(90,130,190,${(0.05 + 0.08 * z) * baseAlpha})`;
-        ctx.lineWidth = 0.7;
-        ctx.beginPath();
-        ctx.moveTo(px(na, now), py(na, now));
-        ctx.lineTo(px(nb, now), py(nb, now));
-        ctx.stroke();
+      // field motion + positions
+      const pos = field.map(n => {
+        n.x += n.vx; if (n.x > W + 20) n.x = -20;
+        return [n.x - st.p * 90 * n.z, n.y + Math.sin(now * 0.0004 + n.ph) * 5 - st.p * 40 * n.z, n];
+      });
+
+      // proximity edges among field nodes
+      const maxD = Math.min(W, H) * 0.2, maxD2 = maxD * maxD;
+      for (let i = 0; i < pos.length; i++) {
+        let links = 0;
+        for (let j = i + 1; j < pos.length && links < 3; j++) {
+          const dx = pos[i][0] - pos[j][0], dy = pos[i][1] - pos[j][1];
+          const d2 = dx * dx + dy * dy;
+          if (d2 < maxD2) {
+            links++;
+            const t = 1 - d2 / maxD2;
+            const m = near((pos[i][0] + pos[j][0]) / 2, (pos[i][1] + pos[j][1]) / 2);
+            ctx.strokeStyle = `rgba(${m > 0 ? 124 : 94},${m > 0 ? 199 : 124},${m > 0 ? 255 : 168},${(0.04 + 0.07 * t + 0.3 * m) * baseAlpha})`;
+            ctx.lineWidth = 0.7 + m * 0.5;
+            ctx.beginPath(); ctx.moveTo(pos[i][0], pos[i][1]); ctx.lineTo(pos[j][0], pos[j][1]); ctx.stroke();
+          }
+        }
       }
 
-      // base nodes
-      for (const n of nodes) {
-        if (n.anchor >= 0) continue;
-        ctx.fillStyle = `rgba(124,160,215,${0.28 * n.z * baseAlpha})`;
-        ctx.fillRect(px(n, now) - 0.9, py(n, now) - 0.9, 1.8, 1.8);
+      // field dots
+      for (const [x, y, n] of pos) {
+        const m = near(x, y);
+        ctx.fillStyle = `rgba(${126 + m * 100},${160 + m * 60},${215 + m * 40},${(0.24 * n.z + 0.55 * m) * baseAlpha})`;
+        const r = 1.7 + m * 1.6;
+        ctx.fillRect(x - r / 2, y - r / 2, r, r);
       }
 
-      // pulses: the moving light on the connection lines
-      for (const p of pulses) {
-        p.t += p.s * (1 + state.p * 0.6);
-        if (p.t > 1) { p.t = 0; p.e = (Math.random() * edges.length) | 0; }
-        const [a, b] = edges[p.e];
-        const na = nodes[a], nb = nodes[b];
-        const x = px(na, now) + (px(nb, now) - px(na, now)) * p.t;
-        const y = py(na, now) + (py(nb, now) - py(na, now)) * p.t;
-        ctx.fillStyle = p.violet
-          ? `rgba(139,124,246,${0.75 * baseAlpha})`
-          : `rgba(124,199,255,${0.8 * baseAlpha})`;
-        ctx.fillRect(x - 1.1, y - 1.1, 2.2, 2.2);
-      }
+      if (mode === 'hero') {
+        // lifecycle routes draw across the system with scroll
+        ctx.lineWidth = 1.1;
+        for (let i = 0; i < 6; i++) {
+          const a = labeled[i], b = labeled[i + 1];
+          const seg = smooth(st.p * 7.2 - i);
+          if (seg <= 0) continue;
+          const ax = lx(a, now), ay = ly(a, now);
+          const bx = lx(b, now), by = ly(b, now);
+          ctx.strokeStyle = `rgba(124,199,255,${(0.28 + 0.25 * seg) * baseAlpha})`;
+          ctx.beginPath(); ctx.moveTo(ax, ay);
+          ctx.lineTo(ax + (bx - ax) * seg, ay + (by - ay) * seg); ctx.stroke();
+        }
 
-      // lifecycle anchors come online with scroll
-      if (anchors) {
-        for (const n of nodes) {
-          if (n.anchor < 0) continue;
-          const lit = scrub ? clamp(state.p * 8.2 - n.anchor, 0, 1) : 1;
-          const x = px(n, now), y = py(n, now);
-          const breathe = 0.75 + Math.sin(now * 0.002 + n.ph) * 0.25;
-          if (lit > 0.02) {
-            const r = 14 + lit * 10;
-            const g = ctx.createRadialGradient(x, y, 0, x, y, r);
-            g.addColorStop(0, `rgba(61,139,253,${0.3 * lit * breathe * baseAlpha})`);
+        // labeled nodes + small text labels
+        ctx.font = '500 10px "Geist Mono", ui-monospace, monospace';
+        for (const n of labeled) {
+          const x = lx(n, now), y = ly(n, now);
+          const m = near(x, y);
+          const lit = n.chain >= 0 ? smooth(st.p * 7.2 - n.chain + 1) : 0;
+          const glow = Math.max(m, lit * 0.7);
+          if (glow > 0.03) {
+            const rr = 12 + glow * 14;
+            const g = ctx.createRadialGradient(x, y, 0, x, y, rr);
+            g.addColorStop(0, `rgba(61,139,253,${0.28 * glow * baseAlpha})`);
             g.addColorStop(1, 'rgba(61,139,253,0)');
             ctx.fillStyle = g;
-            ctx.beginPath(); ctx.arc(x, y, r, 0, 6.29); ctx.fill();
+            ctx.beginPath(); ctx.arc(x, y, rr, 0, 6.29); ctx.fill();
           }
-          const c = 2.6 + lit * 1.2;
-          ctx.fillStyle = lit > 0.02
-            ? `rgba(${Math.round(124 + 100 * lit)},${Math.round(160 + 60 * lit)},255,${(0.5 + 0.5 * lit) * baseAlpha})`
-            : `rgba(85,103,126,${0.6 * baseAlpha})`;
-          ctx.fillRect(x - c / 2, y - c / 2, c, c);
+          const s = 3.4 + glow * 2;
+          ctx.fillStyle = `rgba(${140 + glow * 90},${180 + glow * 50},255,${(0.55 + 0.45 * glow) * baseAlpha})`;
+          ctx.fillRect(x - s / 2, y - s / 2, s, s);
+          ctx.fillStyle = `rgba(195,205,220,${(0.34 + 0.5 * glow) * baseAlpha})`;
+          ctx.fillText(n.label.toUpperCase(), x + 9, y - 7);
+        }
+
+        // soft cursor halo: the system lights where the mouse goes
+        if (st.hasMouse) {
+          const g = ctx.createRadialGradient(st.emx, st.emy, 0, st.emx, st.emy, 150);
+          g.addColorStop(0, `rgba(94,124,168,${0.07 * baseAlpha})`);
+          g.addColorStop(1, 'rgba(94,124,168,0)');
+          ctx.fillStyle = g;
+          ctx.beginPath(); ctx.arc(st.emx, st.emy, 150, 0, 6.29); ctx.fill();
         }
       }
       ctx.restore();
@@ -160,9 +175,10 @@
     canvas.classList.add('on');
 
     if (RM) {
-      // static composition: fully-lit network, no motion loop
-      state.p = 1;
-      for (let i = 0; i < 36; i++) draw(i * 16);
+      st.p = 0.8;
+      const paint = () => { for (let i = 0; i < 30; i++) draw(i * 16); };
+      paint();
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(paint);
       return { setProgress() {}, setMouse() {} };
     }
 
@@ -172,99 +188,162 @@
     document.addEventListener('visibilitychange', () => { document.hidden ? stop() : start(); });
 
     return {
-      setProgress(p) { state.p = p; },
-      setMouse(x, y) { state.mx = x; state.my = y; },
+      setProgress(p) { st.p = p; },
+      setMouse(x, y) {
+        const r = canvas.getBoundingClientRect();
+        st.mx = x - r.left; st.my = y - r.top; st.hasMouse = true;
+        if (st.emx < -999) { st.emx = st.mx; st.emy = st.my; }
+      },
     };
   }
 
-  const heroCanvas = document.getElementById('heroNet');
-  const heroNet = heroCanvas ? createNet(heroCanvas, { anchors: true, scrub: true }) : null;
-  const ctaCanvas = document.getElementById('ctaNet');
-  if (ctaCanvas) createNet(ctaCanvas, { density: 0.5, baseAlpha: 0.7 });
+  const heroNet = document.getElementById('heroNet')
+    ? createNet(document.getElementById('heroNet'), { mode: 'hero' }) : null;
+  const flowBg = document.getElementById('flowBg')
+    ? createNet(document.getElementById('flowBg'), { density: 0.45, baseAlpha: 0.65 }) : null;
+  if (document.getElementById('ctaNet'))
+    createNet(document.getElementById('ctaNet'), { density: 0.4, baseAlpha: 0.6 });
 
-  // subtle mouse parallax on the hero network
-  if (heroNet && !RM && window.matchMedia('(hover: hover)').matches) {
-    window.addEventListener('pointermove', (e) => {
-      heroNet.setMouse(e.clientX / window.innerWidth - 0.5, e.clientY / window.innerHeight - 0.5);
-    }, { passive: true });
+  if (heroNet && FINE && !RM) {
+    window.addEventListener('pointermove', e => heroNet.setMouse(e.clientX, e.clientY), { passive: true });
   }
 
-  /* ====================== ENTRANCE CHOREOGRAPHY ===================== */
+  /* ======================= ENTRANCE CHOREOGRAPHY ==================== */
   const title = document.querySelector('.hero__title');
   const enter = () => {
     if (title) title.classList.add('lit');
     document.querySelectorAll('[data-entrance]').forEach(el => el.classList.add('in'));
   };
   if (RM) enter();
-  else if (document.fonts && document.fonts.ready) { document.fonts.ready.then(enter); setTimeout(enter, 700); }
+  else if (document.fonts && document.fonts.ready) { document.fonts.ready.then(enter); setTimeout(enter, 750); }
   else setTimeout(enter, 250);
 
-  /* ==================== SCROLL: HERO + FLOW SCRUB =================== */
-  const hero = document.getElementById('hero');
-  const cue = document.getElementById('heroCue');
-  const panelWraps = [...document.querySelectorAll('.hero__panelwrap')];
-  const flow = document.getElementById('flow');
-  const osfill = document.getElementById('osfill');
-  const osnodes = [...document.querySelectorAll('.osnode')];
-  const nav = document.getElementById('nav');
+  /* ==================== FLOW: pinned lifecycle scrub ================ */
+  const flow = document.querySelector('.flow');
+  const flowStage = document.getElementById('flowStage');
+  const flowPath = document.getElementById('flowPath');
+  const flowMarks = document.getElementById('flowMarkers');
+  const flowCopies = [...document.querySelectorAll('.flow__copy')];
+  const railItems = [...document.querySelectorAll('#flowRail li')];
+  let marks = [];
 
+  function layoutMarkers() {
+    if (!flowPath || !flowMarks || !desktop() || RM) return;
+    const wrap = document.getElementById('flowCanvas');
+    if (!wrap || !wrap.clientWidth) return;
+    const L = flowPath.getTotalLength();
+    if (!marks.length) {
+      marks = CHAIN.map(label => {
+        const el = document.createElement('div');
+        el.className = 'fmark';
+        el.innerHTML = '<span class="fmark__dot"></span><span class="fmark__label">' + label + '</span>';
+        flowMarks.appendChild(el);
+        return el;
+      });
+    }
+    const sx = wrap.clientWidth / 1200, sy = wrap.clientHeight / 420;
+    marks.forEach((el, i) => {
+      const pt = flowPath.getPointAtLength(L * (0.04 + 0.92 * (i / 6)));
+      el.style.left = (pt.x * sx) + 'px';
+      el.style.top = (pt.y * sy) + 'px';
+    });
+  }
+
+  /* ===================== ONE SCROLL HANDLER ========================= */
+  const hero = document.getElementById('hero');
+  const heroCopy = document.getElementById('heroCopy');
+  const cue = document.getElementById('heroCue');
+  const nav = document.getElementById('nav');
   let ticking = false;
+
   function onScroll() {
     ticking = false;
     if (nav) nav.classList.toggle('is-scrolled', window.scrollY > 40);
+    const scrub = desktop() && !RM;
 
-    const scrubbing = desktop() && !RM;
-
-    if (hero && scrubbing) {
+    if (hero && scrub) {
       const range = hero.offsetHeight - window.innerHeight;
       const p = clamp(-hero.getBoundingClientRect().top / (range || 1), 0, 1);
       if (heroNet) heroNet.setProgress(p);
-      panelWraps.forEach((w, i) => {
-        w.style.transform = `translateY(${(-p * (46 + i * 34)).toFixed(1)}px)`;
-      });
-      if (cue) cue.style.opacity = String(clamp(1 - p * 4, 0, 1));
+      if (heroCopy) {
+        const fade = clamp(1 - p * 1.6, 0, 1);
+        heroCopy.style.opacity = fade.toFixed(3);
+        heroCopy.style.transform = `translateY(${(-p * 90).toFixed(1)}px)`;
+        heroCopy.style.pointerEvents = fade < 0.15 ? 'none' : '';
+      }
+      if (cue) cue.style.opacity = String(clamp(1 - p * 5, 0, 1));
     }
 
-    if (flow && scrubbing) {
+    if (flow && flowStage && scrub) {
       const range = flow.offsetHeight - window.innerHeight;
       const p = clamp(-flow.getBoundingClientRect().top / (range || 1), 0, 1);
-      const e = p * p * (3 - 2 * p); // smoothstep: uses the full pin range
-      if (osfill) osfill.style.width = (e * 100).toFixed(1) + '%';
-      osnodes.forEach((n, i) => n.classList.toggle('on', e >= (i + 0.5) / 7));
+      const e = smooth(p);
+      if (flowPath) flowPath.style.strokeDashoffset = String(1 - e);
+      const k = clamp(Math.floor(e * 7), 0, 6);
+      flowCopies.forEach((c, i) => c.classList.toggle('is-active', i === k));
+      railItems.forEach((r, i) => r.classList.toggle('on', i <= k));
+      marks.forEach((m, i) => m.classList.toggle('on', e * 7 >= i + 0.35));
+      if (flowBg) flowBg.setProgress(k / 6);
     }
   }
   window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
-  window.addEventListener('resize', onScroll);
-  onScroll();
+  window.addEventListener('resize', () => { layoutMarkers(); onScroll(); });
+  layoutMarkers(); onScroll();
 
-  // static fallbacks (mobile / reduced motion): light nodes as they appear
-  if (!desktop() || RM) {
-    if (osfill) osfill.style.width = '100%';
-    if (RM || !('IntersectionObserver' in window)) {
-      osnodes.forEach(n => n.classList.add('on'));
-    } else {
-      const fo = new IntersectionObserver(es => es.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('on'); fo.unobserve(e.target); }
-      }), { threshold: 0.4 });
-      osnodes.forEach(n => fo.observe(n));
-    }
-    if (heroNet) heroNet.setProgress(0.7); // network mostly online without scrub
+  // non-scrub fallback: network partially alive without the pin
+  if (!desktop() || RM) { if (heroNet) heroNet.setProgress(0.6); }
+
+  /* ============== SUITE: one interactive product surface =========== */
+  const items = [...document.querySelectorAll('.surface__item')];
+  const scenes = [...document.querySelectorAll('.scene')];
+  const sCopies = [...document.querySelectorAll('.surface__copy')];
+  const view = document.getElementById('suiteView');
+  let active = 0;
+
+  function setActive(i) {
+    if (i === active) return;
+    active = i;
+    items.forEach((el, j) => {
+      el.classList.toggle('is-active', j === i);
+      el.setAttribute('aria-selected', String(j === i));
+    });
+    sCopies.forEach((el, j) => el.classList.toggle('is-active', j === i));
+    scenes.forEach(el => el.classList.remove('is-active'));
+    if (view) void view.offsetWidth;           // restart the draw animation
+    if (scenes[i]) scenes[i].classList.add('is-active');
+  }
+  // draw the first scene when the surface actually enters view
+  const surfaceEl = document.querySelector('.surface');
+  if (surfaceEl && view && !RM && 'IntersectionObserver' in window) {
+    scenes.forEach(el => el.classList.remove('is-active'));
+    const so = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { scenes[active].classList.add('is-active'); so.disconnect(); }
+    }), { threshold: 0.3 });
+    so.observe(surfaceEl);
   }
 
-  /* ========================= SCROLL REVEALS ========================= */
-  const reveals = [...document.querySelectorAll('[data-reveal]')];
+  items.forEach((el, i) => {
+    el.addEventListener('click', () => setActive(i));
+    if (FINE) el.addEventListener('mouseenter', () => setActive(i));
+    el.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') { e.preventDefault(); const n = (i + 1) % items.length; items[n].focus(); setActive(n); }
+      if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') { e.preventDefault(); const n = (i - 1 + items.length) % items.length; items[n].focus(); setActive(n); }
+    });
+  });
+
+  /* ========================= SPARSE REVEALS ========================= */
   if (!RM && 'IntersectionObserver' in window) {
     const io = new IntersectionObserver(es => es.forEach(e => {
       if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); }
     }), { threshold: 0.16, rootMargin: '0px 0px -8% 0px' });
-    reveals.forEach(el => {
+    document.querySelectorAll('[data-reveal]').forEach(el => {
       if (el.getBoundingClientRect().top > window.innerHeight * 0.92) {
         el.classList.add('is-hidden'); io.observe(el);
       }
     });
   }
 
-  /* ===================== NAV: spy + mobile menu ===================== */
+  /* ==================== NAV: spy + mobile menu ====================== */
   const links = [...document.querySelectorAll('.nav__links a')];
   const idFor = h => h && h.startsWith('#') ? document.getElementById(h.slice(1)) : null;
   const targets = links.map(a => idFor(a.getAttribute('href'))).filter(Boolean);
