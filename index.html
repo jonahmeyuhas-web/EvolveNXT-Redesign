@@ -3,26 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EvolveNXT · The distribution engine for insurance carriers</title>
-  <meta name="description" content="EvolveNXT runs the full distribution loop for Health, Life, and P&C carriers: producer onboarding, hierarchy, incentive compensation, and on-time payouts, in one system of record." />
+  <title>EvolveNXT · The operating system for insurance distribution</title>
+  <meta name="description" content="EvolveNXT helps insurance carriers manage producer onboarding, hierarchy, compensation, enrollment, CRM, and lead management from one connected platform." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="css/tokens.css" />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-  <!-- boot: a thin "system booting" tell, non-blocking -->
-  <div class="boot" id="boot" aria-hidden="true"><span class="boot__bar" id="bootBar"></span><span class="boot__num" id="bootNum">00</span></div>
-
-  <!-- fixed grain overlay -->
   <div class="grain" aria-hidden="true"></div>
-
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- ============================== NAV ============================== -->
+  <!-- ================================ NAV ================================ -->
   <header class="nav" id="nav">
     <div class="nav__inner container">
       <a class="logo" href="#" aria-label="EvolveNXT home">
@@ -33,372 +28,232 @@
         <span class="logo__word">evolve<b>NXT</b></span>
       </a>
       <nav class="nav__links" id="navLinks" aria-label="Primary">
-        <a href="#platform">Platform</a>
-        <a href="#products">Products</a>
-        <a href="#audiences">Audiences</a>
-        <a href="#company">Company</a>
+        <a href="#flow">Platform</a>
+        <a href="#modules">Products</a>
+        <a href="#complexity">Solutions</a>
+        <a href="#company">About</a>
+        <a href="#cta">Contact</a>
       </nav>
       <div class="nav__actions">
-        <a class="btn btn--ghost btn--sm" href="#demo">Sign in</a>
-        <a class="btn btn--primary btn--sm magnetic" href="#demo">Book a walkthrough</a>
+        <a class="btn btn--primary btn--sm" href="#cta">Request a demo</a>
       </div>
       <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
     </div>
   </header>
 
   <main id="main">
-    <!-- ============================== HERO ============================== -->
-    <section class="hero" id="platform">
-      <div class="hero__mesh" aria-hidden="true"></div>
-      <canvas class="hero__field" id="flowField" aria-hidden="true"></canvas>
-      <div class="hero__vignette" aria-hidden="true"></div>
+    <!-- ============================ 1 · HERO ============================ -->
+    <!-- Scroll-driven: the section is taller than the viewport; the stage is
+         sticky and scrolling scrubs the command-center canvas + panels.
+         A Higgsfield loop can drop in later as a layer under the canvas. -->
+    <section class="hero" id="hero">
+      <div class="hero__stage">
+        <canvas class="hero__net" id="heroNet" aria-hidden="true"></canvas>
+        <div class="hero__shade" aria-hidden="true"></div>
 
-      <div class="container hero__grid">
-        <div class="hero__col">
-          <p class="eyebrow" data-reveal>01 / Distribution Management</p>
-          <h1 class="hero__title" aria-label="Pay producers right, every time.">
-            <span class="line"><span>Pay producers</span></span>
-            <span class="line"><span><em>right</em>, every time.</span></span>
-          </h1>
-          <p class="hero__lead" data-reveal data-reveal-delay="2">
-            Onboarding, hierarchy, incentive comp, and payout. One system of record for
-            Health, Life &amp; Annuity, and P&amp;C carriers.
-          </p>
-          <div class="hero__cta" data-reveal data-reveal-delay="3">
-            <a class="btn btn--primary btn--lg magnetic" href="#products">See the platform</a>
-            <a class="btn btn--ghost-light btn--lg" href="#demo">Book a walkthrough</a>
+        <div class="container hero__grid">
+          <div class="hero__copy">
+            <p class="eyebrow" data-entrance>Insurance distribution, unified</p>
+            <h1 class="hero__title" aria-label="The operating system for insurance distribution.">
+              <span class="line"><span>The operating system</span></span>
+              <span class="line"><span>for insurance distribution.</span></span>
+            </h1>
+            <p class="hero__lead" data-entrance data-entrance-delay="2">
+              EvolveNXT helps insurance carriers manage producer onboarding, hierarchy,
+              compensation, enrollment, CRM, and lead management from one connected platform.
+            </p>
+            <div class="hero__cta" data-entrance data-entrance-delay="3">
+              <a class="btn btn--primary btn--lg" href="#cta">Request a demo</a>
+              <a class="btn btn--ghost btn--lg" href="#flow">Explore the platform</a>
+            </div>
           </div>
-          <div class="switcher" data-reveal data-reveal-delay="4" role="tablist" aria-label="Audience">
-            <button class="switcher__pill is-active" role="tab" aria-selected="true">Health</button>
-            <button class="switcher__pill" role="tab" aria-selected="false">Life &amp; Annuity</button>
-            <button class="switcher__pill" role="tab" aria-selected="false">P&amp;C</button>
-            <button class="switcher__pill" role="tab" aria-selected="false">Agencies</button>
+
+          <div class="hero__panels" aria-hidden="true">
+            <div class="hero__panelwrap" data-depth="1">
+              <div class="panel glass" data-entrance data-entrance-delay="2">
+                <span class="panel__label">Producer file</span>
+                <ul class="panel__rows">
+                  <li><span>Licensing</span><span class="status status--ok">Verified</span></li>
+                  <li><span>Contracting</span><span class="status status--ok">Executed</span></li>
+                  <li><span>Appointment</span><span class="status status--live">Active</span></li>
+                </ul>
+              </div>
+            </div>
+            <div class="hero__panelwrap" data-depth="2">
+              <div class="panel glass" data-entrance data-entrance-delay="4">
+                <span class="panel__label">Hierarchy</span>
+                <svg class="panel__tree" viewBox="0 0 220 84" aria-hidden="true">
+                  <path d="M110 18 V38 M110 38 H50 V60 M110 38 V60 M110 38 H170 V60" fill="none" stroke="currentColor" stroke-width="1.2"/>
+                  <rect x="86" y="6" width="48" height="14"/><text x="110" y="16">Carrier</text>
+                  <rect x="26" y="60" width="48" height="14"/><text x="50" y="70">Agency</text>
+                  <rect x="86" y="60" width="48" height="14"/><text x="110" y="70">Agency</text>
+                  <rect x="146" y="60" width="48" height="14"/><text x="170" y="70">Producer</text>
+                </svg>
+              </div>
+            </div>
+            <div class="hero__panelwrap" data-depth="3">
+              <div class="panel glass" data-entrance data-entrance-delay="5">
+                <span class="panel__label">Compensation</span>
+                <div class="panel__bars"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                <div class="panel__row"><span>Current cycle</span><span class="status status--ok">Complete</span></div>
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- LIVE commission engine surface -->
-        <aside class="engine" id="engine" aria-label="Live commission engine preview">
-          <div class="engine__head">
-            <span class="engine__label">Commission engine</span>
-            <span class="engine__live"><i></i>Live</span>
-          </div>
-
-          <svg class="engine__tree" viewBox="0 0 300 120" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
-            <path class="tree__link" d="M150 26 V52 M150 52 H70 V80 M150 52 H150 V80 M150 52 H230 V80" fill="none" stroke="var(--slate-500)" stroke-width="1.4"/>
-            <g class="tree__node" data-node="0"><rect x="120" y="10" width="60" height="18" rx="4"/><text x="150" y="22">FMO</text></g>
-            <g class="tree__node" data-node="1"><rect x="42" y="80" width="56" height="18" rx="4"/><text x="70" y="92">Agency</text></g>
-            <g class="tree__node" data-node="2"><rect x="122" y="80" width="56" height="18" rx="4"/><text x="150" y="92">Agency</text></g>
-            <g class="tree__node" data-node="3"><rect x="202" y="80" width="56" height="18" rx="4"/><text x="230" y="92">Producer</text></g>
-          </svg>
-
-          <div class="engine__figure">
-            <span class="engine__flabel">Commission payable</span>
-            <span class="engine__amount num"><em data-counter data-to="4182.50" data-prefix="$" data-decimals="2">$0.00</em></span>
-            <span class="chip chip--calc" id="calcChip">Calculated</span>
-          </div>
-
-          <dl class="engine__meta">
-            <div><dt>Producer</dt><dd class="num">P-40928</dd></div>
-            <div><dt>Plan</dt><dd>H-2026 · Tiered</dd></div>
-            <div><dt>Cycle</dt><dd class="num" data-idle data-base="1284" data-suffix=" runs">1,284 runs</dd></div>
-          </dl>
-        </aside>
-      </div>
-
-      <div class="hero__scrollcue" aria-hidden="true"><span></span></div>
-    </section>
-
-    <!-- ============================= TRUST ============================= -->
-    <section class="trust" aria-label="Trusted by carriers and agencies">
-      <div class="container trust__head">
-        <span class="eyebrow">Trusted by carriers &amp; agencies</span>
-        <span class="trust__chip">Processing commissions for Health, Life &amp; P&amp;C carriers nationwide</span>
-      </div>
-      <div class="marquee" aria-hidden="true">
-        <div class="marquee__track" id="marqueeTrack">
-          <span class="tlogo">Meridian</span><span class="tlogo">Northwind</span><span class="tlogo">Vanguard&nbsp;Health</span>
-          <span class="tlogo">Ardent</span><span class="tlogo">Beacon&nbsp;Mutual</span><span class="tlogo">Keystone</span>
-          <span class="tlogo">Summit&nbsp;Life</span><span class="tlogo">Cascade</span><span class="tlogo">Harborview</span>
-        </div>
+        <div class="hero__cue" id="heroCue" aria-hidden="true"><span></span></div>
       </div>
     </section>
 
-    <!-- ===================== PIPELINE (signature) ====================== -->
-    <section class="pipeline" id="pipeline" aria-labelledby="pipe-h">
-      <div class="pipeline__sticky">
+    <!-- ====================== 2 · DISTRIBUTION OS FLOW ================== -->
+    <section class="flow" id="flow">
+      <div class="flow__stage">
         <div class="container">
           <div class="section__head" data-reveal>
-            <p class="kicker">02 / The core loop</p>
-            <h2 class="section__title" id="pipe-h">From signup to a correct payout, one continuous system.</h2>
+            <p class="eyebrow">The distribution lifecycle</p>
+            <h2 class="section__title">One connected system, end to end.</h2>
+            <p class="section__lead">From producer onboarding to compensation, EvolveNXT connects every step of the distribution lifecycle.</p>
           </div>
-          <div class="flow" id="flow">
-            <div class="flow__rail"><span class="flow__rail-fill" id="railFill"></span></div>
-            <ol class="flow__stages">
-              <li class="stage" data-stage="0"><span class="stage__dot"></span><span class="stage__i num">01</span><h3>Onboarded</h3><p>Licensed &amp; appointed</p></li>
-              <li class="stage" data-stage="1"><span class="stage__dot"></span><span class="stage__i num">02</span><h3>Placed</h3><p>Into hierarchy</p></li>
-              <li class="stage" data-stage="2"><span class="stage__dot"></span><span class="stage__i num">03</span><h3>Plan applied</h3><p>Comp rules bound</p></li>
-              <li class="stage" data-stage="3"><span class="stage__dot"></span><span class="stage__i num">04</span><h3>Calculated</h3><p>Every split, correct</p></li>
-              <li class="stage" data-stage="4"><span class="stage__dot"></span><span class="stage__i num">05</span><h3>Paid</h3><p class="num" id="flowPaid">$0.00</p></li>
+
+          <div class="osflow" id="osflow">
+            <div class="osflow__rail" aria-hidden="true"><span class="osflow__fill" id="osfill"></span></div>
+            <ol class="osflow__steps">
+              <li class="osnode" data-step="0"><span class="osnode__mark"></span><h3>Onboard</h3><p>Producer intake</p></li>
+              <li class="osnode" data-step="1"><span class="osnode__mark"></span><h3>Contract</h3><p>Agreements executed</p></li>
+              <li class="osnode" data-step="2"><span class="osnode__mark"></span><h3>Appoint</h3><p>Carrier appointments</p></li>
+              <li class="osnode" data-step="3"><span class="osnode__mark"></span><h3>Place</h3><p>Hierarchy position</p></li>
+              <li class="osnode" data-step="4"><span class="osnode__mark"></span><h3>Enroll</h3><p>Digital enrollment</p></li>
+              <li class="osnode" data-step="5"><span class="osnode__mark"></span><h3>Compensate</h3><p>Programs calculated</p></li>
+              <li class="osnode" data-step="6"><span class="osnode__mark"></span><h3>Report</h3><p>Distribution insight</p></li>
             </ol>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ============================ PRODUCTS =========================== -->
-    <div id="products"></div>
-
-    <!-- ICM -->
-    <section class="section split" aria-labelledby="icm-h">
-      <div class="container split__grid">
-        <div class="split__copy" data-reveal>
-          <p class="kicker">03 / Incentive Comp</p>
-          <h2 class="section__title" id="icm-h">Model any comp plan. Calculate every commission correctly.</h2>
-          <p class="section__lead">Build tiered, split, and override structures without spreadsheets, then pay producers accurately at scale, every cycle. The highest-stakes module, engineered to never be wrong.</p>
-          <ul class="ticks">
-            <li>Tiered, bonus, and override modeling</li>
-            <li>Automated reconciliation and audit trail</li>
-            <li>Correct splits across every hierarchy level</li>
-          </ul>
-        </div>
-        <div class="split__viz" data-reveal data-reveal-delay="1">
-          <div class="panel">
-            <div class="panel__head"><span class="panel__label">Plan yield · 12 mo</span><span class="chip">+ modeled</span></div>
-            <svg class="curve" viewBox="0 0 320 160" preserveAspectRatio="none" aria-hidden="true">
-              <defs>
-                <linearGradient id="curveArea" x1="0" x2="0" y1="0" y2="1">
-                  <stop offset="0" stop-color="var(--purple-500)" stop-opacity=".28"/>
-                  <stop offset="1" stop-color="var(--royal-500)" stop-opacity="0"/>
-                </linearGradient>
-              </defs>
-              <path class="curve__area" d="M0 140 C60 130 90 96 140 90 C190 84 210 52 260 40 C290 33 305 26 320 20 L320 160 L0 160 Z" fill="url(#curveArea)"/>
-              <path class="curve__line" d="M0 140 C60 130 90 96 140 90 C190 84 210 52 260 40 C290 33 305 26 320 20" fill="none" stroke="var(--royal-400)" stroke-width="2.4" stroke-linecap="round"/>
-              <circle class="curve__dot" cx="140" cy="90" r="3.5"/>
-              <circle class="curve__dot" cx="260" cy="40" r="3.5"/>
-            </svg>
-            <div class="panel__foot"><span>Modeled payout</span><span class="num"><em data-counter data-to="2.41" data-prefix="$" data-suffix="M" data-decimals="2">$0.00M</em></span></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Onboarding -->
-    <section class="section split split--rev" aria-labelledby="onb-h">
-      <div class="container split__grid">
-        <div class="split__viz" data-reveal>
-          <div class="panel">
-            <div class="panel__head"><span class="panel__label">Onboarding status</span><span class="num" data-counter data-to="6" data-suffix=" days">0 days</span></div>
-            <div class="steps-v">
-              <div class="stepv" data-stepv="0"><span class="stepv__chip">Licensed</span><span class="stepv__meta num">NIPR verified</span></div>
-              <div class="stepv" data-stepv="1"><span class="stepv__chip">Appointed</span><span class="stepv__meta num">3 states</span></div>
-              <div class="stepv" data-stepv="2"><span class="stepv__chip">Placed</span><span class="stepv__meta num">Meridian FMO</span></div>
-              <div class="stepv" data-stepv="3"><span class="stepv__chip stepv__chip--done">Ready to sell</span><span class="stepv__meta num">Day 6</span></div>
-            </div>
-          </div>
-        </div>
-        <div class="split__copy" data-reveal data-reveal-delay="1">
-          <p class="kicker">04 / Onboarding</p>
-          <h2 class="section__title" id="onb-h">Onboard producers in days, not months.</h2>
-          <p class="section__lead">Automated licensing and appointment checks, instant hierarchy placement, and a clear path to first sale. Cut weeks of back-and-forth to a few clean steps.</p>
-          <ul class="ticks">
-            <li>NIPR license &amp; appointment automation</li>
-            <li>Rules-based hierarchy placement</li>
-            <li>Days-to-productivity tracking</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Portal -->
-    <section class="section split" aria-labelledby="prt-h">
-      <div class="container split__grid">
-        <div class="split__copy" data-reveal>
-          <p class="kicker">05 / Producer Portal</p>
-          <h2 class="section__title" id="prt-h">Give every producer real-time visibility.</h2>
-          <p class="section__lead">Self-service statements, transparent commission detail, and real-time notifications. Fewer status calls, more selling.</p>
-          <ul class="ticks">
-            <li>Live statements and payout detail</li>
-            <li>Document center and e-sign</li>
-            <li>Real-time alerts and messaging</li>
-          </ul>
-        </div>
-        <div class="split__viz" data-reveal data-reveal-delay="1">
-          <div class="panel frame">
-            <div class="shimmer" aria-hidden="true"></div>
-            <div class="panel__head"><span class="panel__label">Producer portal</span><span class="engine__live"><i></i>Live</span></div>
-            <div class="portal__rows">
-              <div class="portal__row"><span>September statement</span><span class="num">$4,182.50</span></div>
-              <div class="portal__row"><span>Pending renewals</span><span class="num">$1,905.00</span></div>
-              <div class="portal__row"><span>Next payout</span><span class="num">Oct 15</span></div>
-            </div>
-            <div class="toast" id="portalToast"><span class="toast__dot"></span>Commission posted for August cycle</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Web enrollment -->
-    <section class="section split split--rev" aria-labelledby="enr-h">
-      <div class="container split__grid">
-        <div class="split__viz" data-reveal>
-          <div class="panel">
-            <div class="panel__head"><span class="panel__label">Enrollment flow</span><span class="chip">Carrier-branded</span></div>
-            <div class="enroll">
-              <div class="enroll__bar"><span class="enroll__fill" data-fill="72"></span></div>
-              <div class="enroll__steps num"><span class="on">Plan</span><span class="on">Details</span><span class="on">Review</span><span>Submit</span></div>
-              <div class="enroll__stat"><span>Completion rate</span><span class="num"><em data-counter data-to="94" data-suffix="%">0%</em></span></div>
-            </div>
-          </div>
-        </div>
-        <div class="split__copy" data-reveal data-reveal-delay="1">
-          <p class="kicker">06 / Web Enrollment</p>
-          <h2 class="section__title" id="enr-h">Carrier-branded enrollment that just works.</h2>
-          <p class="section__lead">Embeddable, multi-step, paperless enrollment tied directly to distribution, so quotes turn into policies without the drop-off.</p>
-          <ul class="ticks">
-            <li>Embeddable and carrier-branded</li>
-            <li>Paperless quoting to bind</li>
-            <li>Tied to producer and hierarchy</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- CRM -->
-    <section class="section split" aria-labelledby="crm-h">
-      <div class="container split__grid">
-        <div class="split__copy" data-reveal>
-          <p class="kicker">07 / CRM &amp; Leads</p>
-          <h2 class="section__title" id="crm-h">Turn leads into producing agents.</h2>
-          <p class="section__lead">Route leads, track activity, and see the full pipeline from prospect to appointed, producing agent, all in the same system that pays them.</p>
-          <ul class="ticks">
-            <li>Lead routing and distribution</li>
-            <li>Activity and conversion tracking</li>
-            <li>Pipeline visibility end to end</li>
-          </ul>
-        </div>
-        <div class="split__viz" data-reveal data-reveal-delay="1">
-          <div class="kanban">
-            <div class="kcol"><span class="kcol__h num">New</span><div class="kcard">A. Rivera</div><div class="kcard">M. Osei</div></div>
-            <div class="kcol"><span class="kcol__h num">Contacted</span><div class="kcard">J. Park</div><div class="kcard kcard--move" id="kMove">D. Cole</div></div>
-            <div class="kcol"><span class="kcol__h num">Appointed</span><div class="kcard">S. Nwosu</div></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================= STATS ============================= -->
-    <section class="stats" aria-labelledby="stats-h">
-      <div class="container">
-        <p class="kicker" data-reveal>By the numbers</p>
-        <h2 class="visually-hidden" id="stats-h">EvolveNXT results</h2>
-        <div class="stats__grid">
-          <div class="stat" data-reveal>
-            <span class="stat__n num"><em data-counter data-to="3.2" data-prefix="$" data-suffix="B">$0B</em></span>
-            <span class="stat__bar"><i data-bar></i></span>
-            <span class="stat__l">Commissions processed annually</span>
-          </div>
-          <div class="stat" data-reveal data-reveal-delay="1">
-            <span class="stat__n num"><em data-counter data-to="48000" data-suffix="+">0</em></span>
-            <span class="stat__bar"><i data-bar></i></span>
-            <span class="stat__l">Producers onboarded</span>
-          </div>
-          <div class="stat" data-reveal data-reveal-delay="2">
-            <span class="stat__n num"><em data-counter data-to="6" data-suffix=" days">0</em></span>
-            <span class="stat__bar"><i data-bar></i></span>
-            <span class="stat__l">Average time to productivity</span>
-          </div>
-          <div class="stat" data-reveal data-reveal-delay="3">
-            <span class="stat__n num"><em data-counter data-to="99.99" data-suffix="%" data-decimals="2">0%</em></span>
-            <span class="stat__bar"><i data-bar></i></span>
-            <span class="stat__l">Calculation accuracy</span>
-          </div>
-        </div>
-        <p class="stats__note">Figures shown are illustrative pending final data from EvolveNXT.</p>
-      </div>
-    </section>
-
-    <!-- =========================== AUDIENCES =========================== -->
-    <section class="section audiences" id="audiences" aria-labelledby="aud-h">
+    <!-- ===================== 3 · CORE PLATFORM MODULES =================== -->
+    <section class="section modules" id="modules">
       <div class="container">
         <div class="section__head" data-reveal>
-          <p class="kicker">One system, four markets</p>
-          <h2 class="section__title" id="aud-h">Built for how your market actually distributes.</h2>
+          <p class="eyebrow">Core platform</p>
+          <h2 class="section__title">Five modules. One connected system.</h2>
         </div>
-        <div class="aud-grid">
-          <a class="aud-card" href="#demo" data-reveal>
-            <h3>Health</h3>
-            <p>Broker distribution, enrollment, and compensation for health plans and their agencies.</p>
-            <span class="aud-card__go" aria-hidden="true">→</span>
-          </a>
-          <a class="aud-card" href="#demo" data-reveal data-reveal-delay="1">
-            <h3>Life &amp; Annuity</h3>
-            <p>Deep hierarchies and layered commission structures, calculated correctly at scale.</p>
-            <span class="aud-card__go" aria-hidden="true">→</span>
-          </a>
-          <a class="aud-card" href="#demo" data-reveal data-reveal-delay="2">
-            <h3>Property &amp; Casualty</h3>
-            <p>Onboard and pay producers faster across P&amp;C channels and appointments.</p>
-            <span class="aud-card__go" aria-hidden="true">→</span>
-          </a>
-          <a class="aud-card" href="#demo" data-reveal data-reveal-delay="3">
-            <h3>Agencies</h3>
-            <p>Give downline agencies self-service, transparency, and speed on one platform.</p>
-            <span class="aud-card__go" aria-hidden="true">→</span>
-          </a>
+
+        <div class="mod-grid">
+          <article class="mod glass" data-reveal>
+            <div class="mod__preview mod__preview--onboard" aria-hidden="true">
+              <div class="prev-row"><i class="prev-check"></i><span></span></div>
+              <div class="prev-row"><i class="prev-check"></i><span></span></div>
+              <div class="prev-row"><i class="prev-check"></i><span></span></div>
+            </div>
+            <h3>Producer Onboarding</h3>
+            <p>Streamline contracting, licensing, appointments, and readiness workflows for producers across every line of business.</p>
+          </article>
+
+          <article class="mod glass" data-reveal data-reveal-delay="1">
+            <div class="mod__preview mod__preview--comp" aria-hidden="true">
+              <div class="prev-bars"><i></i><i></i><i></i><i></i><i></i></div>
+            </div>
+            <h3>Incentive Compensation</h3>
+            <p>Configure, calculate, and manage complex compensation programs with accuracy, transparency, and control.</p>
+          </article>
+
+          <article class="mod glass" data-reveal data-reveal-delay="2">
+            <div class="mod__preview mod__preview--portal" aria-hidden="true">
+              <div class="prev-row"><span></span><span class="prev-pill"></span></div>
+              <div class="prev-row"><span></span><span class="prev-pill"></span></div>
+              <div class="prev-toast">Notification</div>
+            </div>
+            <h3>Producer Portal &amp; Notifications</h3>
+            <p>Give producers a centralized place to track status, access tools, receive updates, and stay ready to sell.</p>
+          </article>
+
+          <article class="mod glass mod--wide" data-reveal>
+            <div class="mod__preview mod__preview--enroll" aria-hidden="true">
+              <div class="prev-stepper">
+                <i class="on"></i><em></em><i class="on"></i><em></em><i></i><em></em><i></i>
+              </div>
+            </div>
+            <h3>Web Enrollment</h3>
+            <p>Support digital enrollment workflows that connect producers, customers, and carrier operations.</p>
+          </article>
+
+          <article class="mod glass mod--wide" data-reveal data-reveal-delay="1">
+            <div class="mod__preview mod__preview--crm" aria-hidden="true">
+              <div class="prev-cols">
+                <div class="prev-col"><i></i><i></i></div>
+                <div class="prev-col"><i class="prev-move"></i></div>
+                <div class="prev-col"><i></i></div>
+              </div>
+            </div>
+            <h3>CRM &amp; Lead Management</h3>
+            <p>Manage relationships, leads, and distribution activity across teams, channels, and markets.</p>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- ========================= TESTIMONIAL (light) =================== -->
-    <section class="quote" aria-labelledby="q-h">
-      <div class="container container--narrow">
-        <p class="kicker kicker--dark" data-reveal>Why carriers switch</p>
-        <blockquote class="quote__text" id="q-h" data-reveal data-reveal-delay="1">
-          "We replaced three systems and a wall of spreadsheets with EvolveNXT. Commissions that used to take a week now reconcile the same day, and our producers finally trust their statements."
-        </blockquote>
-        <div class="quote__by" data-reveal data-reveal-delay="2">
-          <span class="quote__name">VP, Distribution Operations</span>
-          <span class="quote__org num">National Health Carrier</span>
-        </div>
-        <div class="quote__metrics" data-reveal data-reveal-delay="2">
-          <div><span class="num"><em data-counter data-to="82" data-suffix="%">0%</em></span><small>Less time on comp cycles</small></div>
-          <div><span class="num"><em data-counter data-to="3" data-suffix="→1">0</em></span><small>Systems consolidated</small></div>
-          <div><span class="num"><em data-counter data-to="6" data-suffix=" days">0</em></span><small>To first sale</small></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- =========================== SECURITY ============================ -->
-    <section class="section security" aria-labelledby="sec-h">
+    <!-- ================== 4 · BUILT FOR INSURANCE COMPLEXITY ============= -->
+    <section class="complexity" id="complexity">
       <div class="container">
-        <p class="kicker" data-reveal>Enterprise-ready</p>
-        <h2 class="section__title security__title" id="sec-h" data-reveal data-reveal-delay="1">Built to sit inside your stack.</h2>
-        <ul class="security__grid" data-reveal data-reveal-delay="2">
-          <li><span class="num">01</span><h3>Security posture</h3><p>Encryption in transit and at rest, role-based access, and full audit trails.</p></li>
-          <li><span class="num">02</span><h3>Carrier integrations</h3><p>Open APIs and connectors for policy, billing, and commission systems.</p></li>
-          <li><span class="num">03</span><h3>Data you control</h3><p>Your distribution data, exportable and reconciled, never a black box.</p></li>
-        </ul>
+        <div class="section__head" data-reveal>
+          <p class="eyebrow eyebrow--paper">Built for insurance complexity</p>
+          <h2 class="section__title section__title--paper">Made for the way distribution actually works.</h2>
+        </div>
+
+        <div class="cx-grid">
+          <div class="cx" data-reveal>
+            <svg class="cx__diagram" viewBox="0 0 200 56" aria-hidden="true">
+              <rect x="4" y="14" width="40" height="28"/><text x="24" y="32">H</text>
+              <rect x="54" y="14" width="40" height="28"/><text x="74" y="32">L&amp;A</text>
+              <rect x="104" y="14" width="40" height="28"/><text x="124" y="32">P&amp;C</text>
+              <rect x="154" y="14" width="40" height="28"/><text x="174" y="32">AG</text>
+            </svg>
+            <h3>Multiple lines of business</h3>
+            <p>Health, Life &amp; Annuity, Property &amp; Casualty, and agency distribution.</p>
+          </div>
+          <div class="cx" data-reveal data-reveal-delay="1">
+            <svg class="cx__diagram" viewBox="0 0 200 56" aria-hidden="true">
+              <path d="M100 10 V24 M100 24 H48 V40 M100 24 V40 M100 24 H152 V40" fill="none" stroke-width="1.2"/>
+              <rect x="82" y="2" width="36" height="12"/>
+              <rect x="30" y="40" width="36" height="12"/>
+              <rect x="82" y="40" width="36" height="12"/>
+              <rect x="134" y="40" width="36" height="12"/>
+            </svg>
+            <h3>Complex hierarchies</h3>
+            <p>Support for producer relationships, uplines, agencies, channels, and organizational structures.</p>
+          </div>
+          <div class="cx" data-reveal data-reveal-delay="2">
+            <svg class="cx__diagram" viewBox="0 0 200 56" aria-hidden="true">
+              <path d="M10 14 H190 M10 28 H190 M10 42 H190" stroke-width="1.2"/>
+              <rect x="58" y="9" width="10" height="10"/>
+              <rect x="128" y="23" width="10" height="10"/>
+              <rect x="86" y="37" width="10" height="10"/>
+            </svg>
+            <h3>Enterprise control</h3>
+            <p>Configurable workflows, reporting, audit visibility, and operational consistency.</p>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- ============================ FINAL CTA ========================== -->
-    <section class="final" id="demo" aria-labelledby="final-h">
-      <div class="final__mesh" aria-hidden="true"></div>
-      <canvas class="final__field" id="finalField" aria-hidden="true"></canvas>
-      <div class="container container--narrow final__inner">
-        <h2 class="final__title" id="final-h" aria-label="See a producer go from signup to paid, correctly.">
-          <span class="line"><span>See a producer go from</span></span>
-          <span class="line"><span>signup to <em>paid</em>, correctly.</span></span>
-        </h2>
-        <div class="final__cta" data-reveal data-reveal-delay="1">
-          <a class="btn btn--primary btn--lg magnetic" href="#">Book a walkthrough</a>
-          <a class="btn btn--ghost-light btn--lg" href="#">See the platform</a>
+    <!-- ============================ 5 · FINAL CTA ======================== -->
+    <section class="cta" id="cta">
+      <canvas class="cta__net" id="ctaNet" aria-hidden="true"></canvas>
+      <div class="container container--narrow cta__inner">
+        <h2 class="cta__title" data-reveal>Modernize the way insurance distribution gets managed.</h2>
+        <p class="cta__lead" data-reveal data-reveal-delay="1">
+          See how EvolveNXT brings onboarding, compensation, enrollment, producer tools,
+          and distribution intelligence into one connected platform.
+        </p>
+        <div class="cta__actions" data-reveal data-reveal-delay="2">
+          <a class="btn btn--primary btn--lg" href="#">Request a demo</a>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- ============================= FOOTER ============================= -->
+  <!-- =============================== FOOTER ============================== -->
   <footer class="footer" id="company">
     <div class="container footer__grid">
       <div class="footer__brand">
@@ -409,20 +264,20 @@
           </svg>
           <span class="logo__word">evolve<b>NXT</b></span>
         </a>
-        <p class="footer__tag">The distribution engine for insurance carriers. Onboarding to payout, in one system of record since 2011.</p>
+        <p class="footer__tag">Distribution management software for insurance carriers across Health, Life &amp; Annuity, and Property &amp; Casualty.</p>
       </div>
-      <nav class="footer__col" aria-label="Products"><h4>Products</h4>
-        <a href="#">Incentive Compensation</a><a href="#">Producer Onboarding</a><a href="#">Portal &amp; Notifications</a><a href="#">Web Enrollment</a><a href="#">CRM &amp; Leads</a>
+      <nav class="footer__col" aria-label="Platform"><h4>Platform</h4>
+        <a href="#modules">Producer Onboarding</a><a href="#modules">Incentive Compensation</a><a href="#modules">Producer Portal</a><a href="#modules">Web Enrollment</a><a href="#modules">CRM &amp; Leads</a>
       </nav>
-      <nav class="footer__col" aria-label="Audiences"><h4>Audiences</h4>
-        <a href="#">Health</a><a href="#">Life &amp; Annuity</a><a href="#">Property &amp; Casualty</a><a href="#">Agencies</a>
+      <nav class="footer__col" aria-label="Solutions"><h4>Solutions</h4>
+        <a href="#complexity">Health</a><a href="#complexity">Life &amp; Annuity</a><a href="#complexity">Property &amp; Casualty</a><a href="#complexity">Agencies</a>
       </nav>
       <nav class="footer__col" aria-label="Company"><h4>Company</h4>
-        <a href="#">About</a><a href="#">Careers</a><a href="#">Security</a><a href="#">Contact</a>
+        <a href="#">About</a><a href="#">Careers</a><a href="#">Contact</a>
       </nav>
     </div>
     <div class="container footer__bar">
-      <span class="num">© 2026 EvolveNXT</span>
+      <span>© 2026 EvolveNXT</span>
       <span class="footer__legal"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Accessibility</a></span>
     </div>
   </footer>

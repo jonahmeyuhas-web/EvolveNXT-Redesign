@@ -1,81 +1,86 @@
 /* ==========================================================================
-   EvolveNXT — Design Tokens
-   Direction: "Assurance Engine · Signal Field hero" (Brand Direction 05)
-   Dark, institutional, kinetic. Navy field, serif headlines, mono data.
+   EvolveNXT - Design Tokens
+   Direction: "Distribution OS" full reset.
+   Sharp, gradient-free, blue-first dark enterprise system.
+   Rules: border-radius 0 everywhere. No CSS gradients. No green.
+   Purple only as a rare accent. No fake numbers anywhere.
    ========================================================================== */
 
 :root {
-  /* ---- Palette ------------------------------------------------------- */
-  --navy-900:   #020838;   /* page field */
-  --navy-850:   #04102e;
-  --navy-800:   #06133A;   /* raised surface / panels */
-  --navy-700:   #0a1c52;
-  --royal-500:  #1B4CC1;   /* primary action / trust blue */
-  --royal-600:  #1740a8;
-  --royal-400:  #4f79db;
-  --purple-500: #6C2BD9;   /* reserved accent only (~3%) */
-  --purple-400: #8b52e6;
-  --slate-500:  #50678F;   /* hairlines, mono labels, muted chrome */
-  --gray-200:   #E6E8EE;   /* body text on dark (AA) */
-  --gray-100:   #F2F3F6;   /* inverted light section bg */
-  --charcoal-900:#1A1D23;  /* type on light sections */
+  /* ---- Palette (flat, no gradients) ---------------------------------- */
+  --bg-0:      #05080F;   /* page deepest */
+  --bg-1:      #070D18;   /* deep navy field */
+  --bg-2:      #0A1322;   /* midnight surface */
+  --bg-3:      #0E1A2E;   /* charcoal-blue raised panel */
 
-  --royal-glow:  rgba(27,76,193,.28);
-  --purple-glow: rgba(108,43,217,.22);
-  --hairline:    rgba(230,232,238,.12);
-  --hairline-2:  rgba(230,232,238,.20);
+  --ink-0:     #F2F5F9;   /* strongest text / off-white */
+  --ink-1:     #C6D0DE;   /* body on dark */
+  --ink-2:     #8294AB;   /* muted slate */
+  --ink-3:     #55677E;   /* faint slate chrome */
 
-  /* ---- Semantic ----------------------------------------------------- */
-  --bg:        var(--navy-900);
-  --surface:   var(--navy-800);
-  --text:      var(--gray-200);
-  --text-dim:  #a9b4cf;
-  --text-strong: #ffffff;
-  --muted:     var(--slate-500);
-  --primary:   var(--royal-500);
-  --accent:    var(--purple-500);
-  --link:      var(--royal-400);
+  --blue:      #3D8BFD;   /* electric blue accent */
+  --blue-600:  #2160D8;   /* action blue (AA with white) */
+  --blue-700:  #1B4FB4;
+  --cyan:      #7CC7FF;   /* soft cyan highlight */
+  --violet:    #8B7CF6;   /* restrained purple, rare pulses only */
 
-  /* ---- Type --------------------------------------------------------- */
-  --serif: "Noto Serif Display", Georgia, "Times New Roman", serif;
-  --sans:  "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --mono:  "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --hairline:   rgba(198,210,226,.10);
+  --hairline-2: rgba(198,210,226,.20);
+  --glass:      rgba(14,26,46,.55);
+  --glow-blue:  rgba(61,139,253,.22);
 
-  --fs-hero: clamp(2.75rem, 1.55rem + 5.1vw, 5rem);
-  --fs-h2:   clamp(1.9rem, 1.3rem + 2.5vw, 3.2rem);
-  --fs-h3:   clamp(1.25rem, 1.1rem + 0.7vw, 1.6rem);
-  --fs-lead: clamp(1.1rem, 1rem + 0.5vw, 1.375rem);
-  --fs-body: 1.0625rem;
+  /* light editorial section */
+  --paper:      #F3F5F8;
+  --paper-2:    #E9EDF3;
+  --paper-ink:  #0B1524;
+  --paper-muted:#5A6B80;
+  --paper-line: #D7DDE6;
+
+  /* ---- Semantic ------------------------------------------------------ */
+  --bg:     var(--bg-1);
+  --text:   var(--ink-1);
+  --muted:  var(--ink-2);
+
+  /* ---- Type (premium sans system) ------------------------------------ */
+  --sans: "Geist", "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --fs-hero: clamp(2.7rem, 1.4rem + 5.4vw, 5.4rem);
+  --fs-h2:   clamp(1.85rem, 1.25rem + 2.5vw, 3.1rem);
+  --fs-h3:   clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem);
+  --fs-lead: clamp(1.05rem, 0.98rem + 0.4vw, 1.25rem);
+  --fs-body: 1rem;
   --fs-sm:   0.9375rem;
   --fs-xs:   0.8125rem;
-  --fs-mono: 0.75rem;
-  --fs-kpi:  clamp(2.5rem, 1.4rem + 5vw, 5.25rem);
+  --fs-label:0.6875rem;   /* mono eyebrows */
 
-  --lh-tight: 1.04;
-  --lh-head:  1.1;
-  --lh-body:  1.65;
-  --track-label: 0.14em;
+  --lh-hero: 1.02;
+  --lh-head: 1.08;
+  --lh-body: 1.65;
 
-  /* ---- Spacing (8pt) ------------------------------------------------ */
+  --ls-hero: -0.035em;
+  --ls-head: -0.025em;
+  --ls-label: 0.18em;
+
+  /* ---- Spacing (8pt) -------------------------------------------------- */
   --s1:.25rem; --s2:.5rem; --s3:1rem; --s4:1.5rem; --s5:2rem;
   --s6:3rem;   --s7:4rem;  --s8:6rem; --s9:8rem;
 
   --section-y: clamp(5rem, 3.5rem + 6vw, 9rem);
   --container: 1240px;
-  --container-narrow: 940px;
+  --container-narrow: 920px;
   --gutter: clamp(1.25rem, 0.5rem + 3vw, 2.25rem);
 
-  /* ---- Radius (small = precise instrument) -------------------------- */
-  --r1: 4px; --r2: 8px; --r3: 12px; --r-pill: 999px;
+  /* ---- Radius: none. Sharp system. ----------------------------------- */
+  --r0: 0;
 
-  /* ---- Motion ------------------------------------------------------- */
-  --e-out:   cubic-bezier(.16,1,.3,1);
-  --e-mask:  cubic-bezier(.22,1,.36,1);
-  --e-spring:cubic-bezier(.34,1.56,.64,1);
-  --e-inout: cubic-bezier(.65,.05,.36,1);
-  --d1:.2s; --d2:.35s; --d3:.6s; --d4:.9s;
+  /* ---- Motion --------------------------------------------------------- */
+  --e-out:  cubic-bezier(.16,1,.3,1);
+  --e-mask: cubic-bezier(.22,1,.36,1);
+  --e-inout:cubic-bezier(.65,.05,.36,1);
+  --d1:.18s; --d2:.32s; --d3:.6s; --d4:.9s;
 
-  --nav-h: 70px;
+  --nav-h: 68px;
 }
 
 @media (prefers-reduced-motion: reduce) {
