@@ -1,71 +1,75 @@
 /* ==========================================================================
    EvolveNXT - Design Tokens
-   Direction: "One Continuous System" (second full reset).
-   Cinematic dark enterprise. No boxes, no cards, no grids of widgets.
-   No CSS gradients. No rounded corners. No green. No fake data.
+   Direction: "Daybreak" (light editorial reset).
+   Warm off-white field, charcoal type, deep navy used selectively,
+   restrained royal blue accents. Serif display + refined sans.
+   One continuous story: the dark dawn hero resolves into the cream page.
    ========================================================================== */
 
 :root {
   /* ---- Palette --------------------------------------------------------- */
-  --bg-0:   #04070D;   /* near-black navy, page field */
-  --bg-1:   #060B14;   /* deep midnight */
-  --bg-2:   #0A1220;   /* charcoal blue */
+  --cream:    #F3EFE7;   /* page field (the dawn canvas resolves to this) */
+  --cream-2:  #ECE7DB;   /* recessed light surface */
+  --stone:    #DDD6C7;   /* stronger light rule */
 
-  --ink-0:  #F1F4F9;   /* off-white, strongest text */
-  --ink-1:  #C3CDDC;   /* body */
-  --ink-2:  #7E90A8;   /* muted slate */
-  --ink-3:  #4E6076;   /* faint chrome */
+  --char:     #1E2126;   /* soft black, headlines */
+  --body:     #3C4148;   /* body copy */
+  --muted:    #71767E;   /* secondary text */
 
-  --steel:  #5E7CA8;   /* steel blue, line work */
-  --blue:   #3D8BFD;   /* electric blue, active light */
-  --blue-600:#2160D8;  /* action (AA with white) */
-  --cyan:   #7CC7FF;   /* soft cyan highlight */
-  --violet: #8B7CF6;   /* tiny secondary accent, canvas pulses only */
+  --navy:     #0A1D3F;   /* deep navy: dark moments, strong accents */
+  --night:    #05070F;   /* hero night sky base */
+  --royal:    #2456C4;   /* restrained royal blue accent */
+  --steel:    #5E7CA8;   /* steel blue, quiet details */
 
-  --hairline:   rgba(195,205,220,.10);
-  --hairline-2: rgba(195,205,220,.20);
-  --glow-blue:  rgba(61,139,253,.18);
+  --rule:        rgba(30,33,38,.14);   /* hairline on cream */
+  --rule-strong: rgba(30,33,38,.3);
+  --rule-dark:   rgba(243,239,231,.16); /* hairline on navy */
+
+  /* on dark */
+  --on-dark:     #F3EFE7;
+  --on-dark-2:   rgba(243,239,231,.66);
 
   /* ---- Semantic ---------------------------------------------------------- */
-  --bg:   var(--bg-0);
-  --text: var(--ink-1);
+  --bg:   var(--cream);
+  --text: var(--body);
 
   /* ---- Type --------------------------------------------------------------- */
-  --sans: "Geist", "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --serif: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --sans:  "Geist", "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mono:  "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
 
-  --fs-hero:  clamp(2.8rem, 1.3rem + 6vw, 5.9rem);
-  --fs-stage: clamp(2rem, 1.2rem + 3.4vw, 4rem);      /* lifecycle stage titles */
-  --fs-h2:    clamp(1.9rem, 1.25rem + 2.6vw, 3.3rem);
-  --fs-h3:    clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem);
+  --fs-hero:  clamp(3rem, 1.4rem + 6.6vw, 6.4rem);
+  --fs-state: clamp(2.6rem, 1.6rem + 4vw, 5rem);      /* statement + stage titles */
+  --fs-h2:    clamp(2.1rem, 1.4rem + 2.8vw, 3.6rem);
+  --fs-h3:    clamp(1.2rem, 1.1rem + 0.5vw, 1.45rem);
+  --fs-list:  clamp(1.5rem, 1.2rem + 1.2vw, 2.2rem);  /* product list rows */
   --fs-lead:  clamp(1.05rem, 0.98rem + 0.4vw, 1.3rem);
-  --fs-body:  1rem;
+  --fs-body:  1.0625rem;
   --fs-sm:    0.9375rem;
   --fs-xs:    0.8125rem;
-  --fs-label: 0.6875rem;
 
   --lh-hero: 1.02;
-  --lh-head: 1.08;
-  --lh-body: 1.68;
+  --lh-head: 1.06;
+  --lh-body: 1.7;
 
-  --ls-hero: -0.038em;
-  --ls-head: -0.026em;
-  --ls-label: 0.2em;
+  --ls-serif: 0;           /* the serif carries itself; no tight tracking */
+  --ls-sans-head: -0.02em;
 
   /* ---- Spacing ------------------------------------------------------------- */
   --s1:.25rem; --s2:.5rem; --s3:1rem; --s4:1.5rem; --s5:2rem;
   --s6:3rem;   --s7:4rem;  --s8:6rem; --s9:9rem;
 
-  --section-y: clamp(6rem, 4rem + 7vw, 11rem);
-  --container: 1280px;
-  --gutter: clamp(1.5rem, 0.5rem + 3.5vw, 3rem);
+  --section-y: clamp(6.5rem, 4rem + 8vw, 12rem);
+  --container: 1240px;
+  --container-narrow: 880px;
+  --gutter: clamp(1.5rem, 0.5rem + 3.5vw, 3.25rem);
 
   /* ---- Motion ---------------------------------------------------------------- */
   --e-out:  cubic-bezier(.16,1,.3,1);
   --e-mask: cubic-bezier(.22,1,.36,1);
   --d1:.18s; --d2:.32s; --d3:.6s;
 
-  --nav-h: 72px;
+  --nav-h: 76px;
 }
 
 @media (prefers-reduced-motion: reduce) {
